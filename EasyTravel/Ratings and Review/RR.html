@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rating and Review</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="home.html" id="nav-home" data-en="Home" data-fr="Accueil">Home</a></li>
+                    <li><a href="booking.html" id="nav-booking" data-en="Booking" data-fr="Réservation">Booking</a></li>
+                    <li><a href="profile.html" id="nav-profile" data-en="Profile" data-fr="Profil">Profile</a></li>
+                    <li><a href="trip-history.html" id="nav-trip-history" data-en="Trip History" data-fr="Historique des voyages">Trip History</a></li>
+                    <li><a href="loyalty.html" id="nav-loyalty" data-en="Loyalty Program" data-fr="Programme de fidélité">Loyalty Program</a></li>
+                    <li><a href="contact.html" id="nav-contact" data-en="Contact Us" data-fr="Nous contacter">Contact Us</a></li>
+                </ul>
+                <div class="language-selector">
+                    <label for="language-select">Language:</label>
+                    <select id="language-select">
+                        <option value="en">English</option>
+                        <option value="fr">French</option>
+                        <!-- Add more languages here -->
+                    </select>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="page-title" id="page-title">Rate Your Trip Experience</h1>
+
+        <!-- Star Rating System -->
+        <div class="star-rating">
+            <label for="rating" id="rating-label">Your Rating:</label>
+            <div class="stars">
+                <span data-star="1" class="star">&#9733;</span>
+                <span data-star="2" class="star">&#9733;</span>
+                <span data-star="3" class="star">&#9733;</span>
+                <span data-star="4" class="star">&#9733;</span>
+                <span data-star="5" class="star">&#9733;</span>
+            </div>
+            <p id="selected-rating">Please select a rating</p>
+        </div>
+
+        <!-- Review Form -->
+        <form id="review-form">
+            <label for="review" id="review-label">Write a Review:</label>
+            <textarea id="review" name="review" rows="5" required></textarea>
+
+            <label for="username" id="username-label">Your Name:</label>
+            <input type="text" id="username" name="username" required>
+
+            <button type="submit" id="submit-button">Submit Review</button>
+        </form>
+
+        <!-- Confirmation Message -->
+        <div id="confirmation-message" class="hidden"></div>
+
+        <!-- List of Previous Reviews -->
+        <div class="reviews-section">
+            <h2 id="reviews-heading">Previous Reviews</h2>
+            <ul id="reviews-list">
+                <!-- Reviews will be dynamically added here -->
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 EasyTravel. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

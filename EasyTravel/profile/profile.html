@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to CSS file -->
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="home.html" id="menu-home">Home</a></li>
+                <li><a href="booking.html" id="menu-booking">Booking</a></li>
+                <li><a href="profile.html" id="menu-profile">Profile</a></li>
+                <li><a href="trip-history.html" id="menu-trip-history">Trip History</a></li>
+                <li><a href="loyalty.html" id="menu-loyalty-program">Loyalty Program</a></li>
+                <li><a href="contact.html" id="menu-contact">Contact Us</a></li>
+            </ul>
+        </nav>
+        <!-- Language Selector -->
+        <div class="language-selector">
+            <label for="language-select">Choose Language:</label>
+            <select id="language-select">
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+            </select>
+        </div>
+    </header>
+    <main>
+        <h1 class="page-title" id="page-title">Your Profile</h1>
+        <form id="profile-form">
+            <label for="first-name" id="label-first-name">First Name:</label>
+            <input type="text" id="first-name" name="first-name" required>
+            
+            <label for="last-name" id="label-last-name">Last Name:</label>
+            <input type="text" id="last-name" name="last-name" required>
+            
+            <label for="email" id="label-email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phone" id="label-phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+            
+            <button type="submit" id="btn-update-profile">Update Profile</button>
+        </form>
+        <div id="confirmation-message" class="hidden"></div>
+    </main>
+    <footer>
+        <p id="footer-text">&copy; 2024 EasyTravel. All rights reserved.</p>
+    </footer>
+    <script src="scripts.js"></script> <!-- Link to JS file -->
+</body>
+</html>
