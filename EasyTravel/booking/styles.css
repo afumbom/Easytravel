@@ -4,33 +4,24 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #f4f4f4; /* Light background for contrast */
 }
 
 header {
-    background-color: #000;
+    background-color: #333; /* Darker header */
     color: white;
-    padding: 10px 0;
+    padding: 15px 0; /* Increased padding for a more spacious feel */
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
+    padding: 0 30px; /* Adjusted padding for nav */
 }
 
 .logo img {
-    max-height: 50px; /* Adjust the size of the logo */
-}
-
-.logo h1 {
-    margin: 0;
-    font-size: 24px;
+    max-height: 50px; /* Maintain logo size */
 }
 
 .nav-links {
@@ -41,27 +32,37 @@ nav {
 }
 
 .nav-links li {
-    margin-left: 20px;
+    margin-left: 25px; /* Spacing between nav items */
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.nav-links a:hover {
+    color: #4CAF50; /* Change color on hover */
 }
 
 .language-switcher {
-    margin-left: auto;
+    margin-left: auto; /* Align to the right */
 }
 
 .language-switcher select {
-    padding: 5px;
+    padding: 8px; /* Increased padding for select */
+    border: none; /* Remove default border */
+    border-radius: 4px;
+    background-color: #fff; /* White background for select */
 }
 
 main {
     padding: 20px;
-    min-height: 100vh; /* Ensure main content takes up the full height */
-    box-sizing: border-box;
+    min-height: 100vh; /* Full height for main content */
+    background-color: #fff; /* White background for main */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .booking-form {
@@ -72,12 +73,14 @@ main {
 fieldset {
     border: 1px solid #ccc;
     border-radius: 5px;
-    padding: 10px;
+    padding: 15px;
     margin-bottom: 20px;
+    background-color: #f9f9f9; /* Light background for fieldset */
 }
 
 legend {
     font-weight: bold;
+    font-size: 18px; /* Larger font size for legend */
 }
 
 .form-group {
@@ -87,27 +90,41 @@ legend {
 label {
     display: block;
     margin-bottom: 5px;
+    font-weight: bold; /* Bold labels */
 }
 
 input[type="text"],
 input[type="tel"],
 select {
     width: 100%;
-    padding: 8px;
+    padding: 10px; /* Increased padding for inputs */
     border: 1px solid #ccc;
     border-radius: 4px;
+    transition: border-color 0.3s; /* Smooth border transition */
 }
 
+input[type="text"]:focus,
+input[type="tel"]:focus,
+select:focus {
+    border-color: #4CAF50; /* Highlight border on focus */
+}
+
+/* Seat Chart Styles */
 .seat-chart {
-    display: grid;
-    gap: 5px;
-    grid-template-columns: repeat(auto-fill, minmax(30px, 1fr));
+    display: flex;
+    flex-direction: column; /* Stack rows vertically */
     margin-bottom: 20px;
 }
 
+.seat-row {
+    display: flex; /* Align seats in a row */
+    justify-content: center; /* Center seats horizontally */
+    margin-bottom: 5px; /* Space between rows */
+}
+
 .seat {
-    width: 30px;
-    height: 30px;
+    width: 40px; /* Seat size */
+    height: 40px; /* Seat size */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -115,45 +132,38 @@ select {
     border-radius: 4px;
     cursor: pointer;
     text-align: center;
+    transition: background-color 0.3s; /* Smooth transition for color */
 }
 
 .seat.free {
-    background: #4CAF50;
+    background: #4CAF50; /* Available seat color */
+}
+
+.seat.selected {
+    background: #ffeb3b; /* Selected seat color */
 }
 
 .seat.taken {
-    background: #f44336;
+    background: #f44336; /* Taken seat color */
 }
 
 .seat.driver {
-    background: #333;
-    color: #fff;
-}
-
-.payment-methods {
-    display: flex;
-    flex-direction: column;
-}
-
-.payment-methods label {
-    margin-bottom: 10px;
-}
-
-.payment-methods input[type="radio"] {
-    margin-right: 10px;
+    background: #333; /* Driver's seat color */
+    color: #fff; /* Driver's seat text color */
 }
 
 button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 12px 25px; /* Increased padding for button */
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px; /* Larger font size for button */
+    transition: background-color 0.3s; /* Smooth background transition */
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #45a049; /* Darken button on hover */
 }

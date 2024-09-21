@@ -3,40 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your main CSS file -->
+    <title>Notifications</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Language Selector -->
-    <div class="language-selector">
-        <label for="language-select">Choose Language:</label>
-        <select id="language-select">
-            <option value="en">English</option>
-            <option value="fr">Français</option>
-        </select>
-    </div>
-
-    <!-- Main Navigation Menu -->
-    <nav>
-        <ul>
-            <li id="menu-home">Home</li>
-            <li id="menu-booking">Booking</li>
-            <li id="menu-profile">Profile</li>
-            <li id="menu-trip-history">Trip History</li>
-            <li id="menu-loyalty-program">Loyalty Program</li>
-            <li id="menu-contact">Contact Us</li>
-        </ul>
-    </nav>
-
-    <!-- Main Content -->
+    <header>
+        <nav>
+            <div class="logo"><img src="logo.png" alt="Easy Travel Logo"></div>
+            <ul class="nav-links">
+                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/homepage/homepage.html" data-lang-en="Home" data-lang-fr="Accueil" aria-label="Home Page">Home</a></li>
+                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/booking/Book%20a%20Bus.html" data-lang-en="Book a Bus" data-lang-fr="Réserver un Bus" aria-label="Book a Bus">Book a Bus</a></li>
+                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/profile/profile.html" data-lang-en="Profile" data-lang-fr="Profil" aria-label="User Profile">Profile</a></li>
+                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/Trip%20History/triphistory.html" data-lang-en="Trip History" data-lang-fr="Historique des Trajets" aria-label="Trip History">Trip History</a></li>
+                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/about/about.html" data-lang-en="About" data-lang-fr="À Propos" aria-label="About Page">About</a></li>
+                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/contact.html" data-lang-en="Contact" data-lang-fr="Contact" aria-label="Contact Page">Contact</a></li>
+                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/Notifications/Notifications.html" data-lang-en="Notifications" data-lang-fr="Notifications" aria-label="Notifications Page">Notifications</a></li>
+                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/Payment/payment.html" data-lang-en="Payment" data-lang-fr="Paiement" aria-label="Payment Page">Payment</a></li>
+                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/Bus%20Details/BusDetails.html" data-lang-en="Bus Details" data-lang-fr="Détails du Bus" aria-label="Bus Details Page">Bus Details</a></li>
+            </ul>            
+        </nav>
+    </header>
     <main>
-        <h1 class="page-title">Notifications</h1>
-        <ul id="notification-list">
-            <!-- Notifications will be dynamically loaded here -->
-        </ul>
+        <h1>Notification</h1>
+        <div id="notification-message"></div> <!-- This will display the notification message -->
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const notificationMessage = sessionStorage.getItem('notificationMessage');
+            const notificationDiv = document.getElementById('notification-message');
 
-    <!-- Include your main JavaScript file -->
-    <script src="main.js"></script>
+            if (notificationMessage) {
+                notificationDiv.textContent = notificationMessage;
+            } else {
+                notificationDiv.textContent = 'No new notifications.';
+            }
+        });
+    </script>
 </body>
 </html>

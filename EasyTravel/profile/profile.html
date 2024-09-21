@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to CSS file -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <nav>
             <ul class="nav-links">
-                <li><a href="home.html" id="menu-home">Home</a></li>
-                <li><a href="booking.html" id="menu-booking">Booking</a></li>
-                <li><a href="profile.html" id="menu-profile">Profile</a></li>
-                <li><a href="trip-history.html" id="menu-trip-history">Trip History</a></li>
-                <li><a href="loyalty.html" id="menu-loyalty-program">Loyalty Program</a></li>
-                <li><a href="contact.html" id="menu-contact">Contact Us</a></li>
+                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/homepage/homepage.html" aria-label="Home Page" id="menu-home">Home</a></li>
+                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/booking/Book%20a%20Bus.html" aria-label="Book a Bus" id="menu-booking">Book a Bus</a></li>
+                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/profile/profile.html" aria-label="User Profile" id="menu-profile">Profile</a></li>
+                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/Trip%20History/triphistory.html" aria-label="Trip History" id="menu-trip-history">Trip History</a></li>
+                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/Ratings%20and%20Review/RR.html" aria-label="Reviews" id="menu-reviews">Reviews</a></li>
+                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/about/about.html" aria-label="About Page" id="menu-about">About</a></li>
+                <li><a href="contact.html" aria-label="Contact Page" id="menu-contact">Contact</a></li>
             </ul>
         </nav>
-        <!-- Language Selector -->
         <div class="language-selector">
-            <label for="language-select">Choose Language:</label>
-            <select id="language-select">
+            <label for="language-select">|</label>
+            <select id="language-select" onchange="translatePage()">
                 <option value="en">English</option>
                 <option value="fr">Français</option>
             </select>
@@ -36,11 +36,20 @@
             <label for="last-name" id="label-last-name">Last Name:</label>
             <input type="text" id="last-name" name="last-name" required>
             
+            <label for="dob" id="label-dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+            
             <label for="email" id="label-email">Email:</label>
             <input type="email" id="email" name="email" required>
             
             <label for="phone" id="label-phone">Phone Number:</label>
             <input type="tel" id="phone" name="phone" required>
+            
+            <label for="password" id="label-password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <label for="confirm-password" id="label-confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
             
             <button type="submit" id="btn-update-profile">Update Profile</button>
         </form>
@@ -49,6 +58,71 @@
     <footer>
         <p id="footer-text">&copy; 2024 EasyTravel. All rights reserved.</p>
     </footer>
-    <script src="scripts.js"></script> <!-- Link to JS file -->
+    <script src="scripts.js"></script>
+    <script>
+        const translations = {
+            en: {
+                title: "Your Profile",
+                firstName: "First Name:",
+                lastName: "Last Name:",
+                dob: "Date of Birth:",
+                email: "Email:",
+                phone: "Phone Number:",
+                password: "Password:",
+                confirmPassword: "Confirm Password:",
+                updateButton: "Update Profile",
+                footerText: "&copy; 2024 EasyTravel. All rights reserved.",
+                menuHome: "Home",
+                menuBooking: "Book a Bus",
+                menuProfile: "Profile",
+                menuTripHistory: "Trip History",
+                menuLoyaltyProgram: "Loyalty Program",
+                menuAbout: "About",
+                menuContact: "Contact"
+            },
+            fr: {
+                title: "Votre Profil",
+                firstName: "Prénom:",
+                lastName: "Nom de Famille:",
+                dob: "Date de Naissance:",
+                email: "Email:",
+                phone: "Numéro de Téléphone:",
+                password: "Mot de Passe:",
+                confirmPassword: "Confirmer le Mot de Passe:",
+                updateButton: "Mettre à Jour le Profil",
+                footerText: "&copy; 2024 EasyTravel. Tous droits réservés.",
+                menuHome: "Accueil",
+                menuBooking: "Réservation",
+                menuProfile: "Profil",
+                menuTripHistory: "Historique des Voyages",
+                menuLoyaltyProgram: "Programme de Fidélité",
+                menuAbout: "À Propos",
+                menuContact: "Contactez-nous"
+            }
+        };
+
+        function translatePage() {
+            const language = document.getElementById("language-select").value;
+            document.getElementById("page-title").innerText = translations[language].title;
+            document.getElementById("label-first-name").innerText = translations[language].firstName;
+            document.getElementById("label-last-name").innerText = translations[language].lastName;
+            document.getElementById("label-dob").innerText = translations[language].dob;
+            document.getElementById("label-email").innerText = translations[language].email;
+            document.getElementById("label-phone").innerText = translations[language].phone;
+            document.getElementById("label-password").innerText = translations[language].password;
+            document.getElementById("label-confirm-password").innerText = translations[language].confirmPassword;
+            document.getElementById("btn-update-profile").innerText = translations[language].updateButton;
+            document.getElementById("footer-text").innerHTML = translations[language].footerText;
+            
+            // Update navigation links
+            document.getElementById("menu-home").innerText = translations[language].menuHome;
+            document.getElementById("menu-booking").innerText = translations[language].menuBooking;
+            document.getElementById("menu-profile").innerText = translations[language].menuProfile;
+            document.getElementById("menu-trip-history").innerText = translations[language].menuTripHistory;
+            document.getElementById("menu-loyalty-program").innerText = translations[language].menuLoyaltyProgram;
+            document.getElementById("menu-about").innerText = translations[language].menuAbout;
+            document.getElementById("menu-contact").innerText = translations[language].menuContact;
+        }
+    </script>
 </body>
 </html>

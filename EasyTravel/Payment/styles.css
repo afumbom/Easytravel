@@ -1,0 +1,159 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+header {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Spread out items */
+}
+
+/* Logo Styles */
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    max-height: 40px; /* Adjusted to make the logo smaller */
+    width: auto; /* Maintain aspect ratio */
+    margin-right: 15px; /* Space between logo and nav links */
+}
+
+/* Navigation Styles */
+header ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-start; /* Align nav links to the left */
+}
+
+header ul li {
+    margin-left: 20px;
+}
+
+header ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+header ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Language Selection Styles */
+.language-select {
+    display: flex;
+    align-items: center;
+}
+
+.language-select label {
+    margin-right: 5px; /* Space between label and dropdown */
+    color: white; /* Label text color */
+}
+
+.language-select select {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: white; /* Background color for dropdown */
+}
+
+/* Main Content Styles */
+main {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+h2 {
+    color: #666;
+}
+
+#selected-seats, #total-price, #notification {
+    margin: 15px 0;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Payment Method Styles */
+#payment-method {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s;
+}
+
+#payment-method:focus {
+    border-color: #007BFF; /* Highlight on focus */
+}
+
+/* Mobile Money Number Styles */
+#mobile-money-number {
+    margin: 15px 0;
+}
+
+#mobile-money-number input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Button Styles */
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px); /* Button lift effect */
+}
+
+/* Notification Styles */
+#notification {
+    display: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
