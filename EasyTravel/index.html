@@ -51,6 +51,12 @@
             font-size: 18px;
         }
         
+        .bus-type {
+            font-size: 14px;
+            color: #666;
+            margin-left: 10px;
+        }
+        
         .bus-details {
             display: flex;
             flex-direction: column;
@@ -250,28 +256,40 @@
         // Sample bus data (replace with actual data from backend)
         const busData = [
             {
-                name: 'Express Liner',
-                departure: '08:00 AM',
-                duration: '4h 30m',
-                type: 'Luxury',
-                price: 50,
-                seats: 32
-            },
-            {
-                name: 'Royal Coach',
-                departure: '09:30 AM',
+                name: 'General Express',
+                departure: '06:30 AM',
                 duration: '5h',
-                type: 'Premium',
-                price: 45,
-                seats: 28
+                type: 'VIP',
+                price: '20,000',
+                seats: 32,
+                amenities: 'AC, WiFi, Reclining Seats'
             },
             {
-                name: 'City Connect',
-                departure: '10:15 AM',
-                duration: '4h',
+                name: 'Bucavoyages',
+                departure: '07:45 AM',
+                duration: '5h 30m',
+                type: 'Premium',
+                price: '15,000',
+                seats: 36,
+                amenities: 'AC, Reclining Seats'
+            },
+            {
+                name: 'Blue Bird',
+                departure: '08:15 AM',
+                duration: '6h',
                 type: 'Standard',
-                price: 35,
-                seats: 40
+                price: '8,000',
+                seats: 42,
+                amenities: 'Standard Seating'
+            },
+            {
+                name: 'Moghamo Express',
+                departure: '09:00 AM',
+                duration: '6h 30m',
+                type: 'Economy',
+                price: '4,000',
+                seats: 45,
+                amenities: 'Basic'
             }
         ];
 
@@ -326,7 +344,7 @@
             resultsContainer.innerHTML = buses.map(bus => `
                 <div class="bus-card">
                     <div class="bus-info">
-                        <h3 class="bus-name">${bus.name}</h3>
+                        <h3 class="bus-name">${bus.name} <span class="bus-type">${bus.type}</span></h3>
                         <div class="bus-details">
                             <div class="detail-item">
                                 <i class="fas fa-clock"></i>
@@ -340,10 +358,14 @@
                                 <i class="fas fa-couch"></i>
                                 <span>${bus.seats} Seats Available</span>
                             </div>
+                            <div class="detail-item">
+                                <i class="fas fa-list"></i>
+                                <span>${bus.amenities}</span>
+                            </div>
                         </div>
                     </div>
                     <div class="bus-price">
-                        <div class="price-amount">$${bus.price}</div>
+                        <div class="price-amount">${bus.price} FCFA</div>
                         <a href="#" class="select-seats">Select Seats</a>
                     </div>
                 </div>
