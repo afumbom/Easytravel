@@ -28,6 +28,7 @@
                         <h2 class="bus-name">General Express</h2>
                         <p class="route">Bamenda → Douala</p>
                         <p class="departure">Departure: <span>06:30 AM</span></p>
+                        <div class="driver-info"></div>
                     </div>
                     <div class="date-info">
                         <p class="date">January 4, 2025</p>
@@ -79,6 +80,7 @@
                             <span id="totalAmount">0 FCFA</span>
                         </div>
                     </div>
+                    <div class="passenger-form"></div>
                     <button id="proceedToPayment" class="proceed-btn" disabled>
                         Proceed to Payment
                     </button>
@@ -89,11 +91,77 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Get bus details from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const busName = urlParams.get('bus');
+            
+            // Sample bus data (in real app, this would come from backend)
+            const busData = {
+                'General Express': {
+                    driver: {
+                        name: 'Mr. John Ndi',
+                        experience: '15 years',
+                        rating: 4.9
+                    },
+                    seatTypes: {
+                        window: 22000,
+                        aisle: 20000,
+                        front: 23000
+                    }
+                },
+                'Bucavoyages': {
+                    driver: {
+                        name: 'Mr. Peter Fon',
+                        experience: '12 years',
+                        rating: 4.8
+                    },
+                    seatTypes: {
+                        window: 17000,
+                        aisle: 15000,
+                        front: 18000
+                    }
+                },
+                'Blue Bird': {
+                    driver: {
+                        name: 'Mr. James Taku',
+                        experience: '8 years',
+                        rating: 4.6
+                    },
+                    seatTypes: {
+                        window: 9000,
+                        aisle: 8000,
+                        front: 10000
+                    }
+                },
+                'Moghamo Express': {
+                    driver: {
+                        name: 'Mr. Robert Ngwa',
+                        experience: '10 years',
+                        rating: 4.7
+                    },
+                    seatTypes: {
+                        window: 6000,
+                        aisle: 5000,
+                        front: 7000
+                    }
+                }
+            };
+
+            const currentBus = busData[busName];
+            
+            // Update bus info
+            document.querySelector('.bus-name').textContent = busName;
+            document.querySelector('.driver-info').innerHTML = `
+                <p><strong>Driver:</strong> ${currentBus.driver.name}</p>
+                <p><strong>Experience:</strong> ${currentBus.driver.experience}</p>
+                <p><strong>Rating:</strong> ${currentBus.driver.rating}⭐</p>
+            `;
+
             const seatsGrid = document.querySelector('.seats-grid');
             const selectedSeatsDisplay = document.getElementById('selectedSeatsDisplay');
             const totalAmountDisplay = document.getElementById('totalAmount');
             const proceedBtn = document.getElementById('proceedToPayment');
-            const pricePerSeat = 20000; // Price in FCFA
+            const maxSeats = 4; // Maximum seats that can be selected
             let selectedSeats = [];
 
             // Generate seats
@@ -112,21 +180,39 @@
                     seat.className = 'seat';
                     seat.dataset.seatNumber = seatNumber;
                     
+                    // Determine seat type and price
+                    let seatType = '';
+                    let seatPrice = 0;
+                    
+                    if (i < 2) { // First two rows are front seats
+                        seatType = 'front';
+                        seatPrice = currentBus.seatTypes.front;
+                    } else if (j === 0 || j === seatsPerRow - 1) { // Window seats
+                        seatType = 'window';
+                        seatPrice = currentBus.seatTypes.window;
+                    } else { // Aisle seats
+                        seatType = 'aisle';
+                        seatPrice = currentBus.seatTypes.aisle;
+                    }
+                    
+                    seat.dataset.type = seatType;
+                    seat.dataset.price = seatPrice;
+                    
                     if (occupiedSeats.includes(seatNumber)) {
                         seat.classList.add('occupied');
                     } else {
                         seat.classList.add('available');
                     }
 
-                    // Add seat number
-                    const seatLabel = document.createElement('span');
-                    seatLabel.className = 'seat-label';
-                    seatLabel.textContent = seatNumber;
-                    seat.appendChild(seatLabel);
+                    // Add seat number and price
+                    seat.innerHTML = `
+                        <span class="seat-label">${seatNumber}</span>
+                        <span class="seat-type">${seatType}</span>
+                        <span class="seat-price">${seatPrice.toLocaleString()} FCFA</span>
+                    `;
 
-                    // Add click handler for available seats
                     if (!occupiedSeats.includes(seatNumber)) {
-                        seat.addEventListener('click', () => toggleSeat(seat, seatNumber));
+                        seat.addEventListener('click', () => toggleSeat(seat, seatNumber, seatPrice));
                     }
 
                     row.appendChild(seat);
@@ -134,15 +220,23 @@
                 seatsGrid.appendChild(row);
             }
 
-            function toggleSeat(seat, seatNumber) {
+            function toggleSeat(seat, seatNumber, seatPrice) {
                 if (seat.classList.contains('occupied')) return;
-
-                seat.classList.toggle('selected');
                 
                 if (seat.classList.contains('selected')) {
-                    selectedSeats.push(seatNumber);
+                    seat.classList.remove('selected');
+                    selectedSeats = selectedSeats.filter(s => s.number !== seatNumber);
                 } else {
-                    selectedSeats = selectedSeats.filter(s => s !== seatNumber);
+                    if (selectedSeats.length >= maxSeats) {
+                        alert(`Maximum ${maxSeats} seats can be selected at once`);
+                        return;
+                    }
+                    seat.classList.add('selected');
+                    selectedSeats.push({
+                        number: seatNumber,
+                        price: seatPrice,
+                        type: seat.dataset.type
+                    });
                 }
 
                 updateSummary();
@@ -150,8 +244,13 @@
 
             function updateSummary() {
                 if (selectedSeats.length > 0) {
-                    selectedSeatsDisplay.textContent = selectedSeats.join(', ');
-                    const total = selectedSeats.length * pricePerSeat;
+                    const seatDetails = selectedSeats.map(seat => 
+                        `${seat.number} (${seat.type} - ${seat.price.toLocaleString()} FCFA)`
+                    ).join(', ');
+                    
+                    selectedSeatsDisplay.textContent = seatDetails;
+                    
+                    const total = selectedSeats.reduce((sum, seat) => sum + seat.price, 0);
                     totalAmountDisplay.textContent = `${total.toLocaleString()} FCFA`;
                     proceedBtn.disabled = false;
                 } else {
@@ -161,9 +260,54 @@
                 }
             }
 
+            // Add passenger information form
+            const passengerForm = document.createElement('div');
+            passengerForm.className = 'passenger-form';
+            passengerForm.innerHTML = `
+                <h3>Passenger Information</h3>
+                <form id="passengerDetails">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email (Optional)</label>
+                        <input type="email" id="email">
+                    </div>
+                </form>
+            `;
+            
+            document.querySelector('.booking-summary').insertBefore(
+                passengerForm, 
+                document.querySelector('.proceed-btn')
+            );
+
             proceedBtn.addEventListener('click', () => {
+                const form = document.getElementById('passengerDetails');
+                if (!form.checkValidity()) {
+                    alert('Please fill in all required passenger information');
+                    return;
+                }
+                
                 // Here we'll add the payment processing logic
-                alert('Proceeding to payment for seats: ' + selectedSeats.join(', '));
+                const bookingDetails = {
+                    bus: busName,
+                    driver: currentBus.driver.name,
+                    seats: selectedSeats,
+                    passenger: {
+                        name: document.getElementById('fullName').value,
+                        phone: document.getElementById('phone').value,
+                        email: document.getElementById('email').value
+                    },
+                    total: selectedSeats.reduce((sum, seat) => sum + seat.price, 0)
+                };
+                
+                console.log('Booking Details:', bookingDetails);
+                alert('Proceeding to payment...');
             });
         });
     </script>

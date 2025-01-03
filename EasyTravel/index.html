@@ -96,6 +96,23 @@
         .select-seats:hover {
             background-color: #3e8e41;
         }
+        
+        .driver-info {
+            margin-top: 10px;
+        }
+        
+        .seat-prices {
+            margin-top: 10px;
+        }
+        
+        .price-label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .price-item {
+            margin-right: 20px;
+        }
     </style>
 </head>
 <body>
@@ -262,7 +279,17 @@
                 type: 'VIP',
                 price: '20,000',
                 seats: 32,
-                amenities: 'AC, WiFi, Reclining Seats'
+                amenities: 'AC, WiFi, Reclining Seats, Entertainment System',
+                driver: {
+                    name: 'Mr. John Ndi',
+                    experience: '15 years',
+                    rating: 4.9
+                },
+                seatTypes: {
+                    window: '22,000',
+                    aisle: '20,000',
+                    front: '23,000'
+                }
             },
             {
                 name: 'Bucavoyages',
@@ -271,7 +298,17 @@
                 type: 'Premium',
                 price: '15,000',
                 seats: 36,
-                amenities: 'AC, Reclining Seats'
+                amenities: 'AC, Reclining Seats, Refreshments',
+                driver: {
+                    name: 'Mr. Peter Fon',
+                    experience: '12 years',
+                    rating: 4.8
+                },
+                seatTypes: {
+                    window: '17,000',
+                    aisle: '15,000',
+                    front: '18,000'
+                }
             },
             {
                 name: 'Blue Bird',
@@ -280,16 +317,36 @@
                 type: 'Standard',
                 price: '8,000',
                 seats: 42,
-                amenities: 'Standard Seating'
+                amenities: 'Standard Seating, Basic Comfort',
+                driver: {
+                    name: 'Mr. James Taku',
+                    experience: '8 years',
+                    rating: 4.6
+                },
+                seatTypes: {
+                    window: '9,000',
+                    aisle: '8,000',
+                    front: '10,000'
+                }
             },
             {
                 name: 'Moghamo Express',
                 departure: '09:00 AM',
                 duration: '6h 30m',
                 type: 'Economy',
-                price: '4,000',
+                price: '5,000',
                 seats: 45,
-                amenities: 'Basic'
+                amenities: 'Basic',
+                driver: {
+                    name: 'Mr. Robert Ngwa',
+                    experience: '10 years',
+                    rating: 4.7
+                },
+                seatTypes: {
+                    window: '6,000',
+                    aisle: '5,000',
+                    front: '7,000'
+                }
             }
         ];
 
@@ -362,11 +419,21 @@
                                 <i class="fas fa-list"></i>
                                 <span>${bus.amenities}</span>
                             </div>
+                            <div class="detail-item driver-info">
+                                <i class="fas fa-user"></i>
+                                <span>Driver: ${bus.driver.name} (${bus.driver.experience}, Rating: ${bus.driver.rating}⭐)</span>
+                            </div>
+                        </div>
+                        <div class="seat-prices">
+                            <span class="price-label">Seat Prices:</span>
+                            <span class="price-item">Window: ${bus.seatTypes.window} FCFA</span>
+                            <span class="price-item">Aisle: ${bus.seatTypes.aisle} FCFA</span>
+                            <span class="price-item">Front: ${bus.seatTypes.front} FCFA</span>
                         </div>
                     </div>
                     <div class="bus-price">
-                        <div class="price-amount">${bus.price} FCFA</div>
-                        <a href="booking/seat-selection.html" class="select-seats">Select Seats</a>
+                        <div class="price-amount">From ${bus.price} FCFA</div>
+                        <a href="booking/seat-selection.html?bus=${encodeURIComponent(bus.name)}" class="select-seats">Select Seats</a>
                     </div>
                 </div>
             `).join('');
