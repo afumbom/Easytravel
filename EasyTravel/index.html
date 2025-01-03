@@ -3,114 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EasyTravel - Book Your Bus Tickets Online</title>
-    <link rel="icon" type="image/png" href="/assets/images/easytravel-logo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>EasyTravel - Your Trusted Travel Partner</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header class="header">
         <nav class="nav-container">
-            <div class="logo">
-                <img src="assets/images/easytravel-logo.png" alt="EasyTravel Logo">
+            <a href="/" class="logo">
+                <img src="assets/images/logo.png" alt="EasyTravel Logo">
                 <span>EasyTravel</span>
+            </a>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#" class="active">Home</a></li>
-                <li><a href="/booking">Book Tickets</a></li>
-                <li><a href="/bus-details">Bus Schedule</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="#">Routes</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="booking/login.html" class="btn btn-primary">Login</a></li>
             </ul>
-            <div class="auth-buttons">
-                <a href="/login" class="btn btn-login">Login</a>
-                <a href="/register" class="btn btn-primary">Sign Up</a>
-            </div>
         </nav>
     </header>
 
     <main>
         <section class="hero">
-            <div class="hero-content">
-                <h1>Travel Made Easy</h1>
-                <p>Book your bus tickets with just a few clicks</p>
+            <h1>Travel Made Easy</h1>
+            <p>Book your bus tickets with confidence. Enjoy comfortable rides to your favorite destinations.</p>
+            <div class="hero-buttons">
+                <a href="booking/book.html" class="btn btn-primary">Book Now</a>
+                <a href="#schedule" class="btn btn-outline">View Schedule</a>
             </div>
         </section>
 
         <section class="search-form">
-            <form>
-                <div class="search-grid">
-                    <div class="form-group">
-                        <label for="from">From</label>
-                        <input type="text" id="from" class="form-control" placeholder="Departure City">
-                    </div>
-                    <div class="form-group">
-                        <label for="to">To</label>
-                        <input type="text" id="to" class="form-control" placeholder="Destination City">
-                    </div>
-                    <div class="form-group">
-                        <label for="date">Date</label>
-                        <input type="date" id="date" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>&nbsp;</label>
-                        <button type="submit" class="btn btn-primary">Search Buses</button>
-                    </div>
+            <div class="search-grid">
+                <div class="form-group">
+                    <label class="form-label">From</label>
+                    <input type="text" class="form-control" placeholder="Departure City">
                 </div>
-            </form>
-        </section>
-
-        <section class="features">
-            <div class="features-grid">
-                <div class="feature-card">
-                    <img src="assets/images/ticket.svg" alt="Easy Booking" class="feature-icon">
-                    <h3>Easy Booking</h3>
-                    <p>Book your tickets in just a few simple steps</p>
+                <div class="form-group">
+                    <label class="form-label">To</label>
+                    <input type="text" class="form-control" placeholder="Destination City">
                 </div>
-                <div class="feature-card">
-                    <img src="assets/images/seat.svg" alt="Seat Selection" class="feature-icon">
-                    <h3>Seat Selection</h3>
-                    <p>Choose your preferred seat with our interactive seat map</p>
+                <div class="form-group">
+                    <label class="form-label">Date</label>
+                    <input type="date" class="form-control">
                 </div>
-                <div class="feature-card">
-                    <img src="assets/images/payment.svg" alt="Secure Payment" class="feature-icon">
-                    <h3>Secure Payment</h3>
-                    <p>Multiple payment options including mobile money</p>
+                <div class="form-group">
+                    <label class="form-label">Passengers</label>
+                    <select class="form-control">
+                        <option value="1">1 Passenger</option>
+                        <option value="2">2 Passengers</option>
+                        <option value="3">3 Passengers</option>
+                        <option value="4">4 Passengers</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="search-btn">Search Buses</button>
                 </div>
             </div>
         </section>
 
-        <section class="popular-routes">
-            <div class="container">
-                <h2>Popular Routes</h2>
-                <div class="routes-grid">
-                    <!-- Popular routes will be dynamically added here -->
+        <section class="features">
+            <div class="section-title">
+                <h2>Why Choose EasyTravel</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-ticket"></i>
+                    </div>
+                    <h3>Easy Booking</h3>
+                    <p>Book your tickets in minutes with our simple and secure booking system.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bus"></i>
+                    </div>
+                    <h3>Wide Network</h3>
+                    <p>Access to multiple routes and destinations across the country.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Our customer support team is always ready to help you.</p>
                 </div>
             </div>
         </section>
     </main>
-
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-left">
                 <div class="footer-logo">
-                    <img src="assets/images/easytravel-logo.png" alt="EasyTravel Logo">
+                    <img src="assets/images/logo.png" alt="EasyTravel Logo">
                     <span>EasyTravel</span>
                 </div>
                 <ul class="footer-links">
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                    <li><a href="/terms">Terms & Conditions</a></li>
-                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Privacy</a></li>
                 </ul>
-            </div>
-            <div class="footer-right">
-                <p> 2024 EasyTravel. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+    <script>
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
