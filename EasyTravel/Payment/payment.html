@@ -3,65 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-en="Payment Page" data-fr="Page de Paiement">Payment Page</title>
+    <title>Payment - EasyTravel</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="logo.webp" alt="EasyTravel Logo">
-        </div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/homepage/homepage.html" data-lang-en="Home" data-lang-fr="Accueil" aria-label="Home Page">Home</a></li>
-                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/booking/Book%20a%20Bus.html" data-lang-en="Book a Bus" data-lang-fr="Réserver un Bus" aria-label="Book a Bus">Book a Bus</a></li>
-                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/profile/profile.html" data-lang-en="Profile" data-lang-fr="Profil" aria-label="User Profile">Profile</a></li>
-                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/Trip%20History/triphistory.html" data-lang-en="Trip History" data-lang-fr="Historique des Trajets" aria-label="Trip History">Trip History</a></li>
-                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/about/about.html" data-lang-en="About" data-lang-fr="À Propos" aria-label="About Page">About</a></li>
-                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/contact.html" data-lang-en="Contact" data-lang-fr="Contact" aria-label="Contact Page">Contact</a></li>
-                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/Notifications/Notifications.html" data-lang-en="Notifications" data-lang-fr="Notifications" aria-label="Notifications Page">Notifications</a></li>
-                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/Payment/payment.html" data-lang-en="Payment" data-lang-fr="Paiement" aria-label="Payment Page">Payment</a></li>
-                <li><a href="/Users/macbookpro2017/Desktop/EasyTravel/Bus%20Details/BusDetails.html" data-lang-en="Bus Details" data-lang-fr="Détails du Bus" aria-label="Bus Details Page">Bus Details</a></li>
-            </ul>            
+    <header class="header">
+        <nav class="nav container">
+            <a href="../index.html" class="logo">
+                <img src="../assets/images/logo.png" alt="EasyTravel Logo">
+                <span>EasyTravel</span>
+            </a>
         </nav>
-        <div class="language-select">
-            <label for="language-select">Language:</label>
-            <select id="language-select">
-                <option value="en">English</option>
-                <option value="fr">Français</option>
-            </select>
-        </div>
     </header>
-    <main>
-        <h1 data-en="Payment Page" data-fr="Page de Paiement">Payment Page</h1>
-        <div>
-            <h2 data-en="Selected Seats" data-fr="Sièges Sélectionnés">Selected Seats</h2>
-            <div id="selected-seats">Loading selected seats...</div>
+
+    <main class="payment-page">
+        <div class="container">
+            <div class="payment-grid">
+                <!-- Booking Summary Section -->
+                <div class="booking-summary">
+                    <h2>Booking Summary</h2>
+                    <div class="summary-details">
+                        <div class="summary-item">
+                            <span class="label">Bus Service:</span>
+                            <span class="value" id="busName">General Express (VIP)</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Route:</span>
+                            <span class="value">Bamenda → Douala</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Date:</span>
+                            <span class="value" id="travelDate">January 4, 2025</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Departure:</span>
+                            <span class="value">06:30 AM</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Selected Seats:</span>
+                            <span class="value" id="selectedSeats">A1, B2 (Window)</span>
+                        </div>
+                        <div class="summary-item total">
+                            <span class="label">Total Amount:</span>
+                            <span class="value" id="totalAmount">40,000 FCFA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Section -->
+                <div class="payment-section">
+                    <h2>Select Payment Method</h2>
+                    
+                    <div class="payment-methods">
+                        <div class="payment-method" data-method="mtn">
+                            <img src="../assets/images/mtn-momo.png" alt="MTN Mobile Money">
+                            <span>MTN Mobile Money</span>
+                        </div>
+                        <div class="payment-method" data-method="orange">
+                            <img src="../assets/images/orange-money.png" alt="Orange Money">
+                            <span>Orange Money</span>
+                        </div>
+                        <div class="payment-method" data-method="card">
+                            <img src="../assets/images/credit-card.png" alt="Credit Card">
+                            <span>Credit/Debit Card</span>
+                        </div>
+                    </div>
+
+                    <!-- Payment Forms -->
+                    <div class="payment-forms">
+                        <!-- MTN Mobile Money Form -->
+                        <form id="mtnForm" class="payment-form">
+                            <div class="form-group">
+                                <label>MTN Mobile Money Number</label>
+                                <input type="tel" placeholder="6XX XXX XXX" required pattern="6[5-9][0-9]{7}">
+                            </div>
+                            <button type="submit" class="pay-button">
+                                Pay with MTN Mobile Money
+                            </button>
+                        </form>
+
+                        <!-- Orange Money Form -->
+                        <form id="orangeForm" class="payment-form">
+                            <div class="form-group">
+                                <label>Orange Money Number</label>
+                                <input type="tel" placeholder="6XX XXX XXX" required pattern="6[5-9][0-9]{7}">
+                            </div>
+                            <button type="submit" class="pay-button">
+                                Pay with Orange Money
+                            </button>
+                        </form>
+
+                        <!-- Credit Card Form -->
+                        <form id="cardForm" class="payment-form">
+                            <div class="form-group">
+                                <label>Card Number</label>
+                                <input type="text" placeholder="XXXX XXXX XXXX XXXX" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Expiry Date</label>
+                                    <input type="text" placeholder="MM/YY" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>CVV</label>
+                                    <input type="text" placeholder="XXX" required maxlength="3">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Card Holder Name</label>
+                                <input type="text" placeholder="Name on card" required>
+                            </div>
+                            <button type="submit" class="pay-button">
+                                Pay with Card
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <h3 data-en="Total Price" data-fr="Prix Total">Total Price</h3>
-            <div id="total-price">0 XAF</div>
-            <div id="tax" data-en="Tax: 0 XAF" data-fr="Taxe: 0 XAF">Tax: 0 XAF</div>
-            <div id="final-price" data-en="Final Price: 0 XAF" data-fr="Prix Final: 0 XAF">Final Price: 0 XAF</div>
-        </div>
-        <div>
-            <label for="payment-method" data-en="Select Payment Method:" data-fr="Sélectionnez le Mode de Paiement:">Select Payment Method:</label>
-            <select id="payment-method">
-                <option value="" data-en="Choose a method" data-fr="Choisissez une méthode">Choose a method</option>
-                <option value="mtn" data-en="MTN Mobile Money" data-fr="MTN Mobile Money">MTN Mobile Money</option>
-                <option value="orange" data-en="Orange Money" data-fr="Orange Money">Orange Money</option>
-            </select>
-        </div>
-        <div id="mobile-money-number" style="display:none;">
-            <label for="number" data-en="Enter Mobile Money Number:" data-fr="Entrez le Numéro de Mobile Money:">Enter Mobile Money Number:</label>
-            <input type="tel" id="number" required>
-        </div>
-        <button id="submit-payment" data-en="Submit Payment" data-fr="Soumettre le Paiement">Submit Payment</button>
-        <div id="notification" style="display:none;"></div>
     </main>
-    <footer>
-        &copy; 2024 Easy Travel
-    </footer>
-    <script src="payment.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            const paymentForms = document.querySelectorAll('.payment-form');
+            
+            // Hide all forms initially
+            paymentForms.forEach(form => form.style.display = 'none');
+
+            // Payment method selection
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', () => {
+                    // Remove active class from all methods
+                    paymentMethods.forEach(m => m.classList.remove('active'));
+                    // Add active class to selected method
+                    method.classList.add('active');
+
+                    // Hide all forms
+                    paymentForms.forEach(form => form.style.display = 'none');
+                    
+                    // Show selected form
+                    const selectedMethod = method.dataset.method;
+                    document.getElementById(`${selectedMethod}Form`).style.display = 'block';
+                });
+            });
+
+            // Handle form submissions
+            paymentForms.forEach(form => {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const formData = new FormData(form);
+                    const paymentMethod = form.id.replace('Form', '');
+
+                    // Show loading state
+                    const button = form.querySelector('button');
+                    const originalText = button.textContent;
+                    button.textContent = 'Processing...';
+                    button.disabled = true;
+
+                    try {
+                        // Simulate payment processing
+                        await new Promise(resolve => setTimeout(resolve, 2000));
+                        
+                        // Redirect to success page
+                        window.location.href = 'confirmation.html';
+                    } catch (error) {
+                        alert('Payment failed. Please try again.');
+                        button.textContent = originalText;
+                        button.disabled = false;
+                    }
+                });
+            });
+
+            // Populate booking details from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('bus')) {
+                document.getElementById('busName').textContent = urlParams.get('bus');
+            }
+            if (urlParams.has('seats')) {
+                document.getElementById('selectedSeats').textContent = urlParams.get('seats');
+            }
+            if (urlParams.has('total')) {
+                document.getElementById('totalAmount').textContent = 
+                    `${parseInt(urlParams.get('total')).toLocaleString()} FCFA`;
+            }
+            if (urlParams.has('date')) {
+                document.getElementById('travelDate').textContent = urlParams.get('date');
+            }
+        });
+    </script>
 </body>
 </html>

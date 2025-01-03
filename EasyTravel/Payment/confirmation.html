@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation - EasyTravel</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <a href="../index.html" class="logo">
+                <img src="../assets/images/logo.png" alt="EasyTravel Logo">
+                <span>EasyTravel</span>
+            </a>
+        </nav>
+    </header>
+
+    <main class="confirmation-page">
+        <div class="container">
+            <div class="confirmation-card">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h1>Booking Confirmed!</h1>
+                <p class="confirmation-message">
+                    Thank you for booking with EasyTravel. Your payment has been processed successfully.
+                </p>
+
+                <div class="ticket">
+                    <div class="ticket-header">
+                        <img src="../assets/images/logo.png" alt="EasyTravel Logo" class="ticket-logo">
+                        <div class="booking-id">
+                            Booking ID: <span id="bookingId">ET-2025104789</span>
+                        </div>
+                    </div>
+
+                    <div class="ticket-details">
+                        <div class="ticket-row">
+                            <div class="detail-item">
+                                <span class="label">Bus Service</span>
+                                <span class="value" id="busName">General Express (VIP)</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Travel Date</span>
+                                <span class="value" id="travelDate">January 4, 2025</span>
+                            </div>
+                        </div>
+
+                        <div class="ticket-row">
+                            <div class="detail-item">
+                                <span class="label">From</span>
+                                <span class="value">Bamenda</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">To</span>
+                                <span class="value">Douala</span>
+                            </div>
+                        </div>
+
+                        <div class="ticket-row">
+                            <div class="detail-item">
+                                <span class="label">Departure Time</span>
+                                <span class="value">06:30 AM</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Duration</span>
+                                <span class="value">5h</span>
+                            </div>
+                        </div>
+
+                        <div class="ticket-row">
+                            <div class="detail-item">
+                                <span class="label">Seat(s)</span>
+                                <span class="value" id="selectedSeats">A1, B2 (Window)</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="label">Amount Paid</span>
+                                <span class="value" id="amountPaid">40,000 FCFA</span>
+                            </div>
+                        </div>
+
+                        <div class="passenger-info">
+                            <span class="label">Passenger</span>
+                            <span class="value" id="passengerName">John Doe</span>
+                        </div>
+                    </div>
+
+                    <div class="ticket-footer">
+                        <div class="qr-code" id="qrCode">
+                            <!-- QR code will be generated here -->
+                        </div>
+                        <div class="ticket-notes">
+                            <p>Please arrive 30 minutes before departure</p>
+                            <p>Present this ticket at the bus station</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="download-ticket">
+                        <i class="fas fa-download"></i> Download Ticket
+                    </button>
+                    <button class="email-ticket">
+                        <i class="fas fa-envelope"></i> Email Ticket
+                    </button>
+                </div>
+
+                <div class="next-steps">
+                    <h3>What's Next?</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            Arrive at the bus station 30 minutes before departure
+                        </li>
+                        <li>
+                            <i class="fas fa-ticket-alt"></i>
+                            Present your ticket (digital or printed) at the counter
+                        </li>
+                        <li>
+                            <i class="fas fa-suitcase"></i>
+                            Pack your essentials and travel documents
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="contact-support">
+                    <p>Need help? Contact our support team</p>
+                    <div class="support-contacts">
+                        <a href="tel:+237600000000">
+                            <i class="fas fa-phone"></i> +237 600 000 000
+                        </a>
+                        <a href="mailto:support@easytravel.com">
+                            <i class="fas fa-envelope"></i> support@easytravel.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Generate QR Code
+            const qrCode = new QRCode(document.getElementById("qrCode"), {
+                text: "ET-2025104789",
+                width: 128,
+                height: 128
+            });
+
+            // Populate ticket details from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('bus')) {
+                document.getElementById('busName').textContent = urlParams.get('bus');
+            }
+            if (urlParams.has('seats')) {
+                document.getElementById('selectedSeats').textContent = urlParams.get('seats');
+            }
+            if (urlParams.has('total')) {
+                document.getElementById('amountPaid').textContent = 
+                    `${parseInt(urlParams.get('total')).toLocaleString()} FCFA`;
+            }
+            if (urlParams.has('date')) {
+                document.getElementById('travelDate').textContent = urlParams.get('date');
+            }
+            if (urlParams.has('passenger')) {
+                document.getElementById('passengerName').textContent = urlParams.get('passenger');
+            }
+
+            // Handle download ticket button
+            document.querySelector('.download-ticket').addEventListener('click', function() {
+                // In a real application, this would generate a PDF ticket
+                alert('Downloading ticket...');
+            });
+
+            // Handle email ticket button
+            document.querySelector('.email-ticket').addEventListener('click', function() {
+                // In a real application, this would send the ticket via email
+                alert('Sending ticket to your email...');
+            });
+        });
+    </script>
+</body>
+</html>
