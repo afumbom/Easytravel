@@ -112,8 +112,17 @@
                     <li><a href="#">Privacy</a></li>
                 </ul>
             </div>
+            <div class="footer-right">
+                <div class="footer-copyright">
+                    2024 EasyTravel. All rights reserved.
+                </div>
+            </div>
         </div>
     </footer>
+
+    <div class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
 
     <script>
         // Mobile Navigation Toggle
@@ -122,6 +131,24 @@
 
         navToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+        });
+
+        // Scroll to Top functionality
+        const scrollToTop = document.getElementById('scrollToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) { // Show button after scrolling 300px
+                scrollToTop.classList.add('visible');
+            } else {
+                scrollToTop.classList.remove('visible');
+            }
+        });
+
+        scrollToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     </script>
 </body>
