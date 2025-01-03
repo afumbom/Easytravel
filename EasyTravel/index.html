@@ -7,6 +7,90 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .error-message {
+            display: none;
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        .error-message.visible {
+            display: block;
+        }
+        
+        .search-results {
+            display: none;
+        }
+        
+        .search-results.active {
+            display: block;
+        }
+        
+        .no-results {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .bus-card {
+            background-color: #f7f7f7;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .bus-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .bus-name {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .bus-details {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .detail-item i {
+            margin-right: 10px;
+        }
+        
+        .bus-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .price-amount {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .select-seats {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .select-seats:hover {
+            background-color: #3e8e41;
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -44,28 +128,39 @@
             <div class="search-grid">
                 <div class="form-group">
                     <label class="form-label">From</label>
-                    <input type="text" class="form-control" placeholder="Departure City">
+                    <input type="text" class="form-control" id="fromCity" placeholder="Departure City" required>
+                    <div class="error-message" id="fromError">Please enter departure city</div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">To</label>
-                    <input type="text" class="form-control" placeholder="Destination City">
+                    <input type="text" class="form-control" id="toCity" placeholder="Destination City" required>
+                    <div class="error-message" id="toError">Please enter destination city</div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Date</label>
-                    <input type="date" class="form-control">
+                    <input type="date" class="form-control" id="travelDate" required>
+                    <div class="error-message" id="dateError">Please select a date</div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">Passengers</label>
-                    <select class="form-control">
+                    <select class="form-control" id="passengers" required>
+                        <option value="">Select passengers</option>
                         <option value="1">1 Passenger</option>
                         <option value="2">2 Passengers</option>
                         <option value="3">3 Passengers</option>
                         <option value="4">4 Passengers</option>
                     </select>
+                    <div class="error-message" id="passengersError">Please select number of passengers</div>
                 </div>
                 <div class="form-group">
-                    <button class="search-btn">Search Buses</button>
+                    <button class="search-btn" id="searchBtn">Search Buses</button>
                 </div>
+            </div>
+        </section>
+
+        <section class="search-results" id="searchResults">
+            <div class="results-container">
+                <!-- Results will be dynamically inserted here -->
             </div>
         </section>
 
@@ -133,7 +228,7 @@
         const scrollToTop = document.getElementById('scrollToTop');
 
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) { // Show button after scrolling 300px
+            if (window.pageYOffset > 300) {
                 scrollToTop.classList.add('visible');
             } else {
                 scrollToTop.classList.remove('visible');
@@ -145,6 +240,137 @@
                 top: 0,
                 behavior: 'smooth'
             });
+        });
+
+        // Search Functionality
+        const searchBtn = document.getElementById('searchBtn');
+        const searchResults = document.getElementById('searchResults');
+        const resultsContainer = document.querySelector('.results-container');
+
+        // Sample bus data (replace with actual data from backend)
+        const busData = [
+            {
+                name: 'Express Liner',
+                departure: '08:00 AM',
+                duration: '4h 30m',
+                type: 'Luxury',
+                price: 50,
+                seats: 32
+            },
+            {
+                name: 'Royal Coach',
+                departure: '09:30 AM',
+                duration: '5h',
+                type: 'Premium',
+                price: 45,
+                seats: 28
+            },
+            {
+                name: 'City Connect',
+                departure: '10:15 AM',
+                duration: '4h',
+                type: 'Standard',
+                price: 35,
+                seats: 40
+            }
+        ];
+
+        function validateForm() {
+            const fromCity = document.getElementById('fromCity');
+            const toCity = document.getElementById('toCity');
+            const travelDate = document.getElementById('travelDate');
+            const passengers = document.getElementById('passengers');
+            let isValid = true;
+
+            // Reset error messages
+            document.querySelectorAll('.error-message').forEach(error => error.classList.remove('visible'));
+
+            // Validate From City
+            if (!fromCity.value.trim()) {
+                document.getElementById('fromError').classList.add('visible');
+                isValid = false;
+            }
+
+            // Validate To City
+            if (!toCity.value.trim()) {
+                document.getElementById('toError').classList.add('visible');
+                isValid = false;
+            }
+
+            // Validate Date
+            if (!travelDate.value) {
+                document.getElementById('dateError').classList.add('visible');
+                isValid = false;
+            }
+
+            // Validate Passengers
+            if (!passengers.value) {
+                document.getElementById('passengersError').classList.add('visible');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function displayBuses(buses) {
+            if (buses.length === 0) {
+                resultsContainer.innerHTML = `
+                    <div class="no-results">
+                        <h3>No buses found for your search criteria</h3>
+                        <p>Please try different dates or destinations</p>
+                    </div>
+                `;
+                return;
+            }
+
+            resultsContainer.innerHTML = buses.map(bus => `
+                <div class="bus-card">
+                    <div class="bus-info">
+                        <h3 class="bus-name">${bus.name}</h3>
+                        <div class="bus-details">
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Departure: ${bus.departure}</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-hourglass-half"></i>
+                                <span>Duration: ${bus.duration}</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-couch"></i>
+                                <span>${bus.seats} Seats Available</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bus-price">
+                        <div class="price-amount">$${bus.price}</div>
+                        <a href="#" class="select-seats">Select Seats</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        searchBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            if (validateForm()) {
+                // Show loading state
+                searchBtn.textContent = 'Searching...';
+                searchBtn.disabled = true;
+
+                // Simulate API call with setTimeout
+                setTimeout(() => {
+                    searchResults.classList.add('active');
+                    displayBuses(busData);
+                    
+                    // Scroll to results
+                    searchResults.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Reset button
+                    searchBtn.textContent = 'Search Buses';
+                    searchBtn.disabled = false;
+                }, 1000);
+            }
         });
     </script>
 </body>
