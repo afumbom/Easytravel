@@ -1,10 +1,21 @@
 const express = require('express');
 const path = require('path');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const connectDB = require('./config/database');
+
+// Load env vars
+dotenv.config();
 
 const app = express();
-const PORT = 8080; // You can change this to any port you prefer
+const PORT = process.env.PORT || 8080;
 
-// Middleware to serve static files from the 'public' directory
+// Connect to database
+connectDB();
+
+// Middleware
+app.use(cors());
+app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve HTML files from specific folders
@@ -41,6 +52,16 @@ app.get('/about', (req, res) => {
 app.get('/contact', (req, res) => {
     res.sendFile(path.join(__dirname, 'contact.html'));
 });
+
+// Import routes
+const authRoutes = require('./routes/auth');
+const busRoutes = require('./routes/bus');
+const bookingRoutes = require('./routes/booking');
+
+// Use routes
+app.use('/api/auth', authRoutes);
+app.use('/api/bus', busRoutes);
+app.use('/api/booking', bookingRoutes);
 
 // Add more routes as needed for other pages...
 

@@ -3,132 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EasyTravel - Bus Booking</title>
+    <title>EasyTravel - Book Your Bus Ticket</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav>
+    <header class="header">
+        <nav class="nav-container">
             <div class="logo">
-                <img src="logo.webp" alt="EasyTravel Logo">
+                <img src="../assets/images/logo.png" alt="EasyTravel Logo">
+                <span>EasyTravel</span>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html" data-en="Home" data-fr="Accueil">Home</a></li>
-                <li><a href="booking.html" data-en="Booking" data-fr="Réservation">Booking</a></li>
-                <li><a href="profile.html" data-en="Profile" data-fr="Profil">Profile</a></li>
-                <li><a href="trip-history.html" data-en="Trip History" data-fr="Historique des voyages">Trip History</a></li>
-                <li><a href="loyalty-program.html" data-en="Loyalty Program" data-fr="Programme de fidélité">Loyalty Program</a></li>
-                <li><a href="about.html" data-en="About" data-fr="À propos">About</a></li>
-                <li><a href="contact.html" data-en="Contact" data-fr="Contact">Contact</a></li>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="#" class="active">Book Tickets</a></li>
+                <li><a href="../bus-details">Bus Schedule</a></li>
+                <li><a href="../about">About Us</a></li>
+                <li><a href="../contact">Contact</a></li>
             </ul>
-            <div class="language-switcher">
-                <select id="language-select">
-                    <option value="en">English</option>
-                    <option value="fr">Français</option>
-                </select>
-            </div>
         </nav>
     </header>
-    <main>
-        <form class="booking-form">
-            <fieldset>
-                <legend data-en="Personal Information" data-fr="Informations personnelles">Personal Information</legend>
-                <div class="form-group">
-                    <label for="name" data-en="Full Name:" data-fr="Nom complet:">Full Name:</label>
-                    <input type="text" id="name" name="name" required>
+
+    <main class="booking-container">
+        <div class="booking-steps">
+            <div class="step active">1</div>
+            <div class="step">2</div>
+            <div class="step">3</div>
+        </div>
+
+        <div class="booking-form">
+            <h2>Select Your Journey</h2>
+            <div class="form-group">
+                <label for="from">From</label>
+                <select id="from" class="form-control" required>
+                    <option value="">Select departure city</option>
+                    <option value="bamenda">Bamenda</option>
+                    <option value="yaounde">Yaoundé</option>
+                    <option value="douala">Douala</option>
+                    <option value="buea">Buea</option>
+                    <option value="limbe">Limbe</option>
+                    <option value="kribi">Kribi</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="to">To</label>
+                <select id="to" class="form-control" required>
+                    <option value="">Select destination city</option>
+                    <option value="bamenda">Bamenda</option>
+                    <option value="yaounde">Yaoundé</option>
+                    <option value="douala">Douala</option>
+                    <option value="buea">Buea</option>
+                    <option value="limbe">Limbe</option>
+                    <option value="kribi">Kribi</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Travel Date</label>
+                <input type="date" id="date" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="passengers">Number of Passengers</label>
+                <select id="passengers" class="form-control" required>
+                    <option value="1">1 Passenger</option>
+                    <option value="2">2 Passengers</option>
+                    <option value="3">3 Passengers</option>
+                    <option value="4">4 Passengers</option>
+                </select>
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="showBuses()">Search Buses</button>
+        </div>
+
+        <div class="bus-selection" style="display: none;">
+            <h2>Available Buses</h2>
+            <div class="bus-list">
+                <!-- Bus options will be dynamically added here -->
+            </div>
+        </div>
+
+        <div class="bus-layout" style="display: none;">
+            <h2>Select Your Seats</h2>
+            <div class="seat-map">
+                <!-- Seats will be dynamically generated -->
+            </div>
+
+            <div class="seat-legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: var(--primary);"></div>
+                    <span>Selected</span>
                 </div>
-                <div class="form-group">
-                    <label for="id-number" data-en="ID Number:" data-fr="Numéro d'identité:">ID Number:</label>
-                    <input type="text" id="id-number" name="id-number" required>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: var(--text-light);"></div>
+                    <span>Occupied</span>
                 </div>
-                <div class="form-group">
-                    <label for="phone-number" data-en="Phone Number:" data-fr="Numéro de téléphone:">Phone Number:</label>
-                    <input type="tel" id="phone-number" name="phone-number" required>
+                <div class="legend-item">
+                    <div class="legend-color" style="border: 2px solid var(--primary);"></div>
+                    <span>Available</span>
                 </div>
-                <div class="form-group">
-                    <label for="travel-date" data-en="Travel Date:" data-fr="Date de départ:">Travel Date:</label>
-                    <input type="date" id="travel-date" name="travel-date" required>
+            </div>
+
+            <div class="summary-section">
+                <h3>Booking Summary</h3>
+                <div class="summary-row">
+                    <span>Selected Seats:</span>
+                    <span id="selected-seats">None</span>
                 </div>
-                <div class="form-group">
-                    <label for="travel-time" data-en="Travel Time:" data-fr="Heure de départ:">Travel Time:</label>
-                    <select id="travel-time" name="travel-time" required>
-                        <option value="morning" data-en="Morning" data-fr="Matin">Morning</option>
-                        <option value="night" data-en="Night" data-fr="Soir">Night</option>
-                    </select>
+                <div class="summary-row">
+                    <span>Price per Seat:</span>
+                    <span>5000 FCFA</span>
                 </div>
-                <div class="form-group">
-                    <label for="present-location" data-en="Present Location:" data-fr="Lieu actuel:">Present Location:</label>
-                    <select id="present-location" name="present-location" required>
-                        <option value="bamenda" data-en="Bamenda" data-fr="Bamenda">Bamenda</option>
-                        <option value="yaounde" data-en="Yaoundé" data-fr="Yaoundé">Yaoundé</option>
-                        <option value="buea" data-en="Buea" data-fr="Buea">Buea</option>
-                        <option value="limbe" data-en="Limbe" data-fr="Limbe">Limbe</option>
-                        <option value="mutengene" data-en="Mutengene" data-fr="Mutengene">Mutengene</option>
-                        <option value="muyuka" data-en="Muyuka" data-fr="Muyuka">Muyuka</option>
-                        <option value="mamfe" data-en="Mamfe" data-fr="Mamfe">Mamfe</option>
-                        <option value="douala" data-en="Douala" data-fr="Douala">Douala</option>
-                        <option value="kribi" data-en="Kribi" data-fr="Kribi">Kribi</option>
-                    </select>
+                <div class="summary-row">
+                    <span>Total Amount:</span>
+                    <span id="total-amount" class="total-amount">0 FCFA</span>
                 </div>
-                <div class="form-group">
-                    <label for="destination" data-en="Destination:" data-fr="Destination:">Destination:</label>
-                    <select id="destination" name="destination" required>
-                        <option value="bamenda" data-en="Bamenda" data-fr="Bamenda">Bamenda</option>
-                        <option value="yaounde" data-en="Yaoundé" data-fr="Yaoundé">Yaoundé</option>
-                        <option value="buea" data-en="Buea" data-fr="Buea">Buea</option>
-                        <option value="limbe" data-en="Limbe" data-fr="Limbe">Limbe</option>
-                        <option value="mutengene" data-en="Mutengene" data-fr="Mutengene">Mutengene</option>
-                        <option value="muyuka" data-en="Muyuka" data-fr="Muyuka">Muyuka</option>
-                        <option value="mamfe" data-en="Mamfe" data-fr="Mamfe">Mamfe</option>
-                        <option value="douala" data-en="Douala" data-fr="Douala">Douala</option>
-                        <option value="kribi" data-en="Kribi" data-fr="Kribi">Kribi</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="agency" data-en="Agency:" data-fr="Agence:">Agency:</label>
-                    <select id="agency" name="agency" required>
-                        <option value="sotrac" data-en="Sotrac" data-fr="Sotrac">Sotrac</option>
-                        <option value="kamcabs" data-en="Kamcabs" data-fr="Kamcabs">Kamcabs</option>
-                        <option value="citybus" data-en="Citybus" data-fr="Citybus">Citybus</option>
-                        <option value="tcs" data-en="TCS" data-fr="TCS">TCS</option>
-                        <option value="atc" data-en="ATC" data-fr="ATC">ATC</option>
-                        <option value="club" data-en="Club" data-fr="Club">Club</option>
-                        <option value="buca" data-en="BUCA" data-fr="BUCA">BUCA</option>
-                        <option value="intercity" data-en="Intercity" data-fr="Intercity">Intercity</option>
-                        <option value="aviron" data-en="Aviron" data-fr="Aviron">Aviron</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="bus-type" data-en="Bus Type:" data-fr="Type de bus:">Bus Type:</label>
-                    <select id="bus-type" name="bus-type" required>
-                        <option value="30-seater" data-en="30-Seater" data-fr="30 places">30-Seater</option>
-                        <option value="55-seater" data-en="55-Seater" data-fr="55 places">55-Seater</option>
-                        <option value="70-seater" data-en="70-Seater" data-fr="70 places">70-Seater</option>
-                    </select>
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend data-en="Select Seats" data-fr="Sélectionnez des sièges">Select Seats</legend>
-                <div id="seat-chart" class="seat-chart">
-                    <!-- Seat layout: The driver's seat is seat 1 -->
-                    <div class="seat driver" data-en="Driver" data-fr="Conducteur">D</div>
-                    <!-- The rest of the seats will be added dynamically via JavaScript -->
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend data-en="Payment Method" data-fr="Méthode de paiement">Payment Method</legend>
-                <div class="payment-methods">
-                    <label>
-                        <input type="radio" name="payment" value="mtm" required> MTN Mobile Money
-                    </label>
-                    <label>
-                        <input type="radio" name="payment" value="orange" required> Orange Money
-                    </label>
-                </div>
-            </fieldset>
-            <button type="submit" data-en="Make a Reservation" data-fr="Faire une réservation">Make a Reservation</button>
-        </form>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <button type="button" class="btn btn-outline" onclick="goBack()">Back</button>
+                <button type="button" class="btn btn-primary" onclick="proceedToPayment()">Proceed to Payment</button>
+            </div>
+        </div>
     </main>
+
     <script src="script.js"></script>
 </body>
 </html>
