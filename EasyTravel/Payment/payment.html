@@ -111,19 +111,30 @@
                                     <label>CVV</label>
                                     <input type="text" placeholder="XXX" required maxlength="3">
                                 </div>
-                            </div>
+        </div>
                             <div class="form-group">
                                 <label>Card Holder Name</label>
                                 <input type="text" placeholder="Name on card" required>
-                            </div>
-                            <button type="submit" class="pay-button">
-                                Pay with Card
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
+    </header>
+    <main>
+        <h1 data-en="Payment Page" data-fr="Page de Paiement">Payment Page</h1>
+        <div>
+            <h2 data-en="Selected Seats" data-fr="Sièges Sélectionnés">Selected Seats</h2>
+            <div id="selected-seats">Loading selected seats...</div>
+        </div>
+        </div>
+        <div>
+            <label for="payment-method" data-en="Select Payment Method:" data-fr="Sélectionnez le Mode de Paiement:">Select Payment Method:</label>
+            <select id="payment-method">
+                <option value="" data-en="Choose a method" data-fr="Choisissez une méthode">Choose a method</option>
+                <option value="mtn" data-en="MTN Mobile Money" data-fr="MTN Mobile Money">MTN Mobile Money</option>
+                <option value="orange" data-en="Orange Money" data-fr="Orange Money">Orange Money</option>
+            </select>
+        </div>
+        </div>
+        <button id="submit-payment" data-en="Submit Payment" data-fr="Soumettre le Paiement">Submit Payment</button>
+        <div id="notification" style="display:none;"></div>
     </main>
 
     <script>

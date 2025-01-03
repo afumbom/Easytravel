@@ -114,195 +114,54 @@
             margin-right: 20px;
         }
         
-        /* New styles for updated bus search results section */
-        .search-results {
-            padding: 20px;
-        }
-        
-        .results-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .results-header h2 {
-            font-weight: bold;
-            font-size: 24px;
-        }
-        
-        .filters {
+        .bus-header {
             display: flex;
             align-items: center;
-        }
-        
-        .filter-btn {
-            background-color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-        
-        .filter-btn.active {
-            background-color: #4CAF50;
-            color: #fff;
-        }
-        
-        .bus-cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .bus-card {
-            margin: 20px;
-            width: calc(33.33% - 20px);
-        }
-        
-        .bus-image {
-            width: 100%;
-            height: 150px;
-            background-color: #ccc;
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .bus-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10px;
+            margin-bottom: 10px;
         }
         
         .bus-type {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: #4CAF50;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        
-        .bus-info {
-            padding: 20px;
-        }
-        
-        .bus-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .company-info {
-            display: flex;
-            align-items: center;
-        }
-        
-        .bus-name {
-            font-weight: bold;
-            font-size: 18px;
-            margin-right: 10px;
-        }
-        
-        .company-rating {
-            display: flex;
-            align-items: center;
-        }
-        
-        .stars {
-            color: #ffd700;
-            margin-right: 5px;
-        }
-        
-        .rating-count {
             font-size: 14px;
             color: #666;
-        }
-        
-        .price-tag {
-            display: flex;
-            align-items: center;
-        }
-        
-        .price {
-            font-weight: bold;
-            font-size: 18px;
-            margin-right: 5px;
-        }
-        
-        .price-label {
-            font-size: 14px;
-            color: #666;
+            margin-left: 10px;
+            text-transform: capitalize;
         }
         
         .journey-info {
+            display: flex;
+            align-items: center;
             margin-bottom: 20px;
         }
         
-        .time-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
+        .journey-duration {
+            margin: 0 20px;
         }
         
-        .departure {
-            margin-right: 20px;
+        .journey-duration span {
+            font-weight: bold;
+            font-size: 18px;
         }
         
         .journey-line {
-            display: flex;
-            align-items: center;
-            margin-right: 20px;
-        }
-        
-        .line {
-            width: 50px;
+            width: 100%;
             height: 2px;
             background-color: #ccc;
-            margin: 0 10px;
+            margin-top: 5px;
         }
         
-        .arrival {
-            margin-left: 20px;
-        }
-        
-        .bus-features {
+        .amenities {
             display: flex;
             flex-wrap: wrap;
             margin-bottom: 20px;
         }
         
-        .feature {
-            display: flex;
-            align-items: center;
+        .amenity {
             margin-right: 20px;
             margin-bottom: 10px;
         }
         
-        .feature i {
+        .amenity i {
             margin-right: 5px;
-        }
-        
-        .driver-info {
-            margin-bottom: 20px;
-        }
-        
-        .driver-profile {
-            display: flex;
-            align-items: center;
-        }
-        
-        .driver-photo {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 10px;
         }
         
         .driver-details {
@@ -313,60 +172,68 @@
         .driver-name {
             font-weight: bold;
             font-size: 16px;
-            margin-bottom: 5px;
         }
         
-        .driver-rating {
+        .driver-stats {
             display: flex;
             align-items: center;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .rating {
+            margin-left: 10px;
         }
         
         .seats-info {
             display: flex;
             align-items: center;
-            margin-top: 10px;
+            margin-bottom: 20px;
         }
         
-        .available-seats {
-            margin-right: 20px;
-        }
-        
-        .seat-types {
-            display: flex;
-            align-items: center;
-        }
-        
-        .seat-type {
+        .seats-info i {
             margin-right: 10px;
         }
         
-        .card-footer {
+        .seat-prices {
+            margin-bottom: 20px;
+        }
+        
+        .price-options {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
+            flex-wrap: wrap;
         }
         
-        .view-seats {
-            background-color: #4CAF50;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        .quick-info {
-            display: flex;
-            align-items: center;
-        }
-        
-        .boarding-point {
+        .price-item {
             margin-right: 20px;
+            margin-bottom: 10px;
         }
         
-        .cancellation {
-            margin-left: 20px;
+        .price-tag {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .price-tag .label {
+            font-size: 14px;
+            color: #666;
+            margin-right: 10px;
+        }
+        
+        .price-amount {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .select-seats {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .select-seats span {
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -437,120 +304,10 @@
         </section>
 
         <section class="search-results" id="searchResults">
-            <div class="container">
-                <div class="results-header">
-                    <h2>Available Buses</h2>
-                    <div class="filters">
-                        <button class="filter-btn active" data-filter="all">All</button>
-                        <button class="filter-btn" data-filter="vip">VIP</button>
-                        <button class="filter-btn" data-filter="standard">Standard</button>
-                        <button class="filter-btn" data-filter="economy">Economy</button>
-                    </div>
-                </div>
-
-                <div class="bus-cards">
-                    <!-- Bus cards will be dynamically added here -->
-                </div>
+            <div class="results-container">
+                <!-- Results will be dynamically inserted here -->
             </div>
         </section>
-
-        <template id="busCardTemplate">
-            <div class="bus-card">
-                <div class="bus-image">
-                    <img src="" alt="Bus Image">
-                    <div class="bus-type"></div>
-                </div>
-                
-                <div class="bus-info">
-                    <div class="bus-header">
-                        <div class="company-info">
-                            <h3 class="bus-name"></h3>
-                            <div class="company-rating">
-                                <div class="stars"></div>
-                                <span class="rating-count"></span>
-                            </div>
-                        </div>
-                        <div class="price-tag">
-                            <span class="price"></span>
-                            <span class="price-label">per seat</span>
-                        </div>
-                    </div>
-
-                    <div class="journey-info">
-                        <div class="time-info">
-                            <div class="departure">
-                                <span class="time"></span>
-                                <span class="city"></span>
-                            </div>
-                            <div class="journey-line">
-                                <span class="duration"></span>
-                                <div class="line"></div>
-                            </div>
-                            <div class="arrival">
-                                <span class="time"></span>
-                                <span class="city"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bus-features">
-                        <div class="feature">
-                            <i class="fas fa-wifi"></i>
-                            <span>WiFi</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-plug"></i>
-                            <span>Power</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-snowflake"></i>
-                            <span>AC</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-tv"></i>
-                            <span>TV</span>
-                        </div>
-                    </div>
-
-                    <div class="driver-info">
-                        <div class="driver-profile">
-                            <img src="" alt="Driver" class="driver-photo">
-                            <div class="driver-details">
-                                <span class="driver-name"></span>
-                                <div class="driver-rating">
-                                    <div class="stars"></div>
-                                    <span class="experience"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="seats-info">
-                            <div class="available-seats">
-                                <i class="fas fa-chair"></i>
-                                <span></span> seats left
-                            </div>
-                            <div class="seat-types">
-                                <span class="seat-type">Window</span>
-                                <span class="seat-type">Aisle</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-footer">
-                        <button class="view-seats">View Seats</button>
-                        <div class="quick-info">
-                            <span class="boarding-point">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Mile 2 Bus Stop
-                            </span>
-                            <span class="cancellation">
-                                <i class="fas fa-undo"></i>
-                                Free Cancellation
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </template>
 
         <section class="features">
             <div class="section-title">
@@ -633,87 +390,192 @@
         // Search Functionality
         const searchBtn = document.getElementById('searchBtn');
         const searchResults = document.getElementById('searchResults');
-        const resultsContainer = document.querySelector('.bus-cards');
+        const resultsContainer = document.querySelector('.results-container');
 
         // Sample bus data (replace with actual data from backend)
         const busData = [
             {
                 name: 'General Express',
-                departure: '06:30 AM',
-                duration: '5h',
                 type: 'VIP',
-                price: '20,000',
-                seats: 32,
-                amenities: 'AC, WiFi, Reclining Seats, Entertainment System',
+                departure: '06:30 AM',
+                arrival: '02:30 PM',
+                duration: '8h 00m',
+                seats: 45,
+                amenities: ['WiFi', 'AC', 'TV', 'Power Outlet'],
                 driver: {
                     name: 'Mr. John Ndi',
                     experience: '15 years',
                     rating: 4.9
                 },
                 seatTypes: {
-                    window: '22,000',
-                    aisle: '20,000',
-                    front: '23,000'
+                    window: 22000,
+                    aisle: 20000,
+                    front: 23000
                 }
             },
             {
                 name: 'Bucavoyages',
-                departure: '07:45 AM',
-                duration: '5h 30m',
-                type: 'Premium',
-                price: '15,000',
-                seats: 36,
-                amenities: 'AC, Reclining Seats, Refreshments',
+                type: 'Standard',
+                departure: '07:00 AM',
+                arrival: '03:30 PM',
+                duration: '8h 30m',
+                seats: 32,
+                amenities: ['AC', 'TV'],
                 driver: {
                     name: 'Mr. Peter Fon',
                     experience: '12 years',
                     rating: 4.8
                 },
                 seatTypes: {
-                    window: '17,000',
-                    aisle: '15,000',
-                    front: '18,000'
+                    window: 17000,
+                    aisle: 15000,
+                    front: 18000
                 }
             },
             {
                 name: 'Blue Bird',
-                departure: '08:15 AM',
-                duration: '6h',
-                type: 'Standard',
-                price: '8,000',
-                seats: 42,
-                amenities: 'Standard Seating, Basic Comfort',
+                type: 'Economy',
+                departure: '08:00 AM',
+                arrival: '04:30 PM',
+                duration: '8h 30m',
+                seats: 28,
+                amenities: ['AC'],
                 driver: {
                     name: 'Mr. James Taku',
                     experience: '8 years',
                     rating: 4.6
                 },
                 seatTypes: {
-                    window: '9,000',
-                    aisle: '8,000',
-                    front: '10,000'
+                    window: 9000,
+                    aisle: 8000,
+                    front: 10000
                 }
             },
             {
                 name: 'Moghamo Express',
+                type: 'VIP',
                 departure: '09:00 AM',
-                duration: '6h 30m',
-                type: 'Economy',
-                price: '5,000',
-                seats: 45,
-                amenities: 'Basic',
+                arrival: '05:00 PM',
+                duration: '8h 00m',
+                seats: 38,
+                amenities: ['WiFi', 'AC', 'TV', 'Power Outlet'],
                 driver: {
                     name: 'Mr. Robert Ngwa',
                     experience: '10 years',
                     rating: 4.7
                 },
                 seatTypes: {
-                    window: '6,000',
-                    aisle: '5,000',
-                    front: '7,000'
+                    window: 20000,
+                    aisle: 18000,
+                    front: 21000
                 }
             }
         ];
+
+        function displayResults(buses) {
+            if (!buses || buses.length === 0) {
+                resultsContainer.innerHTML = '<div class="no-results">No buses found for your search criteria</div>';
+                return;
+            }
+
+            resultsContainer.innerHTML = buses.map(bus => `
+                <div class="bus-card">
+                    <div class="bus-info">
+                        <div class="bus-header">
+                            <h3 class="bus-name">${bus.name}</h3>
+                            <span class="bus-type ${bus.type.toLowerCase()}">${bus.type}</span>
+                        </div>
+                        
+                        <div class="bus-details">
+                            <div class="journey-info">
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <div class="time-info">
+                                        <span class="time">${bus.departure}</span>
+                                        <span class="label">Departure</span>
+                                    </div>
+                                </div>
+                                <div class="journey-duration">
+                                    <span>${bus.duration}</span>
+                                    <div class="journey-line"></div>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <div class="time-info">
+                                        <span class="time">${bus.arrival}</span>
+                                        <span class="label">Arrival</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="amenities">
+                                ${bus.amenities.map(amenity => `
+                                    <div class="amenity">
+                                        <i class="fas fa-${getAmenityIcon(amenity)}" title="${amenity}"></i>
+                                        <span>${amenity}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            
+                            <div class="driver-info">
+                                <i class="fas fa-user-tie"></i>
+                                <div class="driver-details">
+                                    <span class="driver-name">${bus.driver.name}</span>
+                                    <div class="driver-stats">
+                                        <span>${bus.driver.experience}</span>
+                                        <span class="rating">⭐ ${bus.driver.rating}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="seats-info">
+                                <i class="fas fa-chair"></i>
+                                <span>${bus.seats} seats available</span>
+                            </div>
+                        </div>
+
+                        <div class="seat-prices">
+                            <span class="price-label">Seat Options:</span>
+                            <div class="price-options">
+                                <div class="price-item">
+                                    <span class="type">Window</span>
+                                    <span class="amount">${bus.seatTypes.window.toLocaleString()} FCFA</span>
+                                </div>
+                                <div class="price-item">
+                                    <span class="type">Aisle</span>
+                                    <span class="amount">${bus.seatTypes.aisle.toLocaleString()} FCFA</span>
+                                </div>
+                                <div class="price-item">
+                                    <span class="type">Front</span>
+                                    <span class="amount">${bus.seatTypes.front.toLocaleString()} FCFA</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bus-price">
+                        <div class="price-tag">
+                            <span class="label">Starting from</span>
+                            <span class="price-amount">${Math.min(bus.seatTypes.window, bus.seatTypes.aisle, bus.seatTypes.front).toLocaleString()} FCFA</span>
+                        </div>
+                        <a href="booking/seat-selection.html?bus=${encodeURIComponent(bus.name)}" class="select-seats">
+                            <span>Select Seats</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getAmenityIcon(amenity) {
+            const icons = {
+                'WiFi': 'wifi',
+                'AC': 'snowflake',
+                'TV': 'tv',
+                'Power Outlet': 'plug'
+            };
+            return icons[amenity] || 'check';
+        }
 
         function validateForm() {
             const fromCity = document.getElementById('fromCity');
@@ -752,41 +614,6 @@
             return isValid;
         }
 
-        function displayBuses(buses) {
-            if (buses.length === 0) {
-                resultsContainer.innerHTML = `
-                    <div class="no-results">
-                        <h3>No buses found for your search criteria</h3>
-                        <p>Please try different dates or destinations</p>
-                    </div>
-                `;
-                return;
-            }
-
-            const busCardTemplate = document.getElementById('busCardTemplate');
-            const busCards = [];
-
-            buses.forEach(bus => {
-                const busCard = busCardTemplate.content.cloneNode(true);
-                busCard.querySelector('.bus-name').textContent = bus.name;
-                busCard.querySelector('.bus-type').textContent = bus.type;
-                busCard.querySelector('.price').textContent = bus.price;
-                busCard.querySelector('.departure .time').textContent = bus.departure;
-                busCard.querySelector('.journey-line .duration').textContent = bus.duration;
-                busCard.querySelector('.arrival .time').textContent = bus.arrival;
-                busCard.querySelector('.driver-name').textContent = bus.driver.name;
-                busCard.querySelector('.driver-rating .stars').textContent = bus.driver.rating;
-                busCard.querySelector('.driver-rating .experience').textContent = bus.driver.experience;
-                busCard.querySelector('.available-seats span').textContent = bus.seats;
-                busCard.querySelector('.seat-types .seat-type').textContent = bus.seatTypes.window;
-
-                busCards.push(busCard);
-            });
-
-            resultsContainer.innerHTML = '';
-            busCards.forEach(busCard => resultsContainer.appendChild(busCard));
-        }
-
         searchBtn.addEventListener('click', (e) => {
             e.preventDefault();
             
@@ -798,7 +625,7 @@
                 // Simulate API call with setTimeout
                 setTimeout(() => {
                     searchResults.classList.add('active');
-                    displayBuses(busData);
+                    displayResults(busData);
                     
                     // Scroll to results
                     searchResults.scrollIntoView({ behavior: 'smooth' });
