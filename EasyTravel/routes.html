@@ -184,6 +184,88 @@
             box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
         }
 
+        .route-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .route-tab {
+            padding: 0.75rem 1.5rem;
+            background: var(--gray-50);
+            border: none;
+            border-radius: 0.5rem;
+            color: var(--blue-dark);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .route-tab.active {
+            background: var(--blue-dark);
+            color: var(--white);
+        }
+
+        .route-tab:hover:not(.active) {
+            background: var(--gray-100);
+        }
+
+        .route-content-tabs {
+            position: relative;
+        }
+
+        .route-content-tab {
+            display: none;
+        }
+
+        .route-content-tab.active {
+            display: block;
+        }
+
+        .schedule-list {
+            display: grid;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .schedule-item {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--gray-50);
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .schedule-item:hover {
+            background: var(--gray-100);
+            transform: translateX(0.25rem);
+        }
+
+        .schedule-time {
+            font-weight: 700;
+            color: var(--blue-dark);
+            font-size: 1.125rem;
+        }
+
+        .schedule-type {
+            color: var(--blue);
+            font-weight: 500;
+        }
+
+        .schedule-price {
+            font-weight: 700;
+            color: var(--blue-dark);
+        }
+
+        .schedule-seats {
+            font-size: 0.875rem;
+            color: var(--blue);
+            margin-top: 0.25rem;
+        }
+
         @media (max-width: 768px) {
             .routes-header {
                 padding: 6rem 1rem 4rem;
@@ -246,23 +328,67 @@
                             <i class="fas fa-route"></i>
                             Yaounde → Douala
                         </h2>
-                        <div class="route-details">
-                            <div class="route-detail">
-                                <i class="fas fa-clock"></i>
-                                <span>Duration: 4 hours</span>
-                            </div>
-                            <div class="route-detail">
-                                <i class="fas fa-road"></i>
-                                <span>Distance: 230 km</span>
-                            </div>
-                            <div class="route-detail">
-                                <i class="fas fa-bus"></i>
-                                <span>Bus Type: VIP & Standard</span>
-                            </div>
+                        <div class="route-tabs">
+                            <button class="route-tab active" onclick="showTab(this, 'info-1')">Info</button>
+                            <button class="route-tab" onclick="showTab(this, 'schedule-1')">Schedule</button>
                         </div>
-                        <div class="route-price">
-                            7,000 FCFA
-                            <small>Starting Price</small>
+                        <div class="route-content-tabs">
+                            <div id="info-1" class="route-content-tab active">
+                                <div class="route-details">
+                                    <div class="route-detail">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Duration: 4 hours</span>
+                                    </div>
+                                    <div class="route-detail">
+                                        <i class="fas fa-road"></i>
+                                        <span>Distance: 230 km</span>
+                                    </div>
+                                    <div class="route-detail">
+                                        <i class="fas fa-bus"></i>
+                                        <span>Bus Type: VIP & Standard</span>
+                                    </div>
+                                </div>
+                                <div class="route-price">
+                                    7,000 FCFA
+                                    <small>Starting Price</small>
+                                </div>
+                            </div>
+                            <div id="schedule-1" class="route-content-tab">
+                                <div class="schedule-list">
+                                    <div class="schedule-item">
+                                        <div class="schedule-time">06:00</div>
+                                        <div class="schedule-type">
+                                            VIP Bus
+                                            <div class="schedule-seats">32 seats available</div>
+                                        </div>
+                                        <div class="schedule-price">9,000 FCFA</div>
+                                    </div>
+                                    <div class="schedule-item">
+                                        <div class="schedule-time">08:00</div>
+                                        <div class="schedule-type">
+                                            Standard Bus
+                                            <div class="schedule-seats">45 seats available</div>
+                                        </div>
+                                        <div class="schedule-price">7,000 FCFA</div>
+                                    </div>
+                                    <div class="schedule-item">
+                                        <div class="schedule-time">10:00</div>
+                                        <div class="schedule-type">
+                                            VIP Bus
+                                            <div class="schedule-seats">28 seats available</div>
+                                        </div>
+                                        <div class="schedule-price">9,000 FCFA</div>
+                                    </div>
+                                    <div class="schedule-item">
+                                        <div class="schedule-time">14:00</div>
+                                        <div class="schedule-type">
+                                            Standard Bus
+                                            <div class="schedule-seats">40 seats available</div>
+                                        </div>
+                                        <div class="schedule-price">7,000 FCFA</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="route-actions">
                             <a href="index.html#search-form" class="route-btn primary">
@@ -280,23 +406,67 @@
                             <i class="fas fa-route"></i>
                             Douala → Bamenda
                         </h2>
-                        <div class="route-details">
-                            <div class="route-detail">
-                                <i class="fas fa-clock"></i>
-                                <span>Duration: 6 hours</span>
-                            </div>
-                            <div class="route-detail">
-                                <i class="fas fa-road"></i>
-                                <span>Distance: 366 km</span>
-                            </div>
-                            <div class="route-detail">
-                                <i class="fas fa-bus"></i>
-                                <span>Bus Type: VIP & Standard</span>
-                            </div>
+                        <div class="route-tabs">
+                            <button class="route-tab active" onclick="showTab(this, 'info-2')">Info</button>
+                            <button class="route-tab" onclick="showTab(this, 'schedule-2')">Schedule</button>
                         </div>
-                        <div class="route-price">
-                            8,000 FCFA
-                            <small>Starting Price</small>
+                        <div class="route-content-tabs">
+                            <div id="info-2" class="route-content-tab active">
+                                <div class="route-details">
+                                    <div class="route-detail">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Duration: 6 hours</span>
+                                    </div>
+                                    <div class="route-detail">
+                                        <i class="fas fa-road"></i>
+                                        <span>Distance: 366 km</span>
+                                    </div>
+                                    <div class="route-detail">
+                                        <i class="fas fa-bus"></i>
+                                        <span>Bus Type: VIP & Standard</span>
+                                    </div>
+                                </div>
+                                <div class="route-price">
+                                    8,000 FCFA
+                                    <small>Starting Price</small>
+                                </div>
+                            </div>
+                            <div id="schedule-2" class="route-content-tab">
+                                <div class="schedule-list">
+                                    <div class="schedule-item">
+                                        <div class="schedule-time">05:30</div>
+                                        <div class="schedule-type">
+                                            VIP Bus
+                                            <div class="schedule-seats">30 seats available</div>
+                                        </div>
+                                        <div class="schedule-price">10,000 FCFA</div>
+                                    </div>
+                                    <div class="schedule-item">
+                                        <div class="schedule-time">07:30</div>
+                                        <div class="schedule-type">
+                                            Standard Bus
+                                            <div class="schedule-seats">42 seats available</div>
+                                        </div>
+                                        <div class="schedule-price">8,000 FCFA</div>
+                                    </div>
+                                    <div class="schedule-item">
+                                        <div class="schedule-time">09:30</div>
+                                        <div class="schedule-type">
+                                            VIP Bus
+                                            <div class="schedule-seats">25 seats available</div>
+                                        </div>
+                                        <div class="schedule-price">10,000 FCFA</div>
+                                    </div>
+                                    <div class="schedule-item">
+                                        <div class="schedule-time">13:30</div>
+                                        <div class="schedule-type">
+                                            Standard Bus
+                                            <div class="schedule-seats">38 seats available</div>
+                                        </div>
+                                        <div class="schedule-price">8,000 FCFA</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="route-actions">
                             <a href="index.html#search-form" class="route-btn primary">
@@ -314,23 +484,67 @@
                             <i class="fas fa-route"></i>
                             Bamenda → Buea
                         </h2>
-                        <div class="route-details">
-                            <div class="route-detail">
-                                <i class="fas fa-clock"></i>
-                                <span>Duration: 5 hours</span>
-                            </div>
-                            <div class="route-detail">
-                                <i class="fas fa-road"></i>
-                                <span>Distance: 290 km</span>
-                            </div>
-                            <div class="route-detail">
-                                <i class="fas fa-bus"></i>
-                                <span>Bus Type: VIP & Standard</span>
-                            </div>
+                        <div class="route-tabs">
+                            <button class="route-tab active" onclick="showTab(this, 'info-3')">Info</button>
+                            <button class="route-tab" onclick="showTab(this, 'schedule-3')">Schedule</button>
                         </div>
-                        <div class="route-price">
-                            7,500 FCFA
-                            <small>Starting Price</small>
+                        <div class="route-content-tabs">
+                            <div id="info-3" class="route-content-tab active">
+                                <div class="route-details">
+                                    <div class="route-detail">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Duration: 5 hours</span>
+                                    </div>
+                                    <div class="route-detail">
+                                        <i class="fas fa-road"></i>
+                                        <span>Distance: 290 km</span>
+                                    </div>
+                                    <div class="route-detail">
+                                        <i class="fas fa-bus"></i>
+                                        <span>Bus Type: VIP & Standard</span>
+                                    </div>
+                                </div>
+                                <div class="route-price">
+                                    7,500 FCFA
+                                    <small>Starting Price</small>
+                                </div>
+                            </div>
+                            <div id="schedule-3" class="route-content-tab">
+                                <div class="schedule-list">
+                                    <div class="schedule-item">
+                                        <div class="schedule-time">06:30</div>
+                                        <div class="schedule-type">
+                                            VIP Bus
+                                            <div class="schedule-seats">30 seats available</div>
+                                        </div>
+                                        <div class="schedule-price">9,500 FCFA</div>
+                                    </div>
+                                    <div class="schedule-item">
+                                        <div class="schedule-time">08:30</div>
+                                        <div class="schedule-type">
+                                            Standard Bus
+                                            <div class="schedule-seats">44 seats available</div>
+                                        </div>
+                                        <div class="schedule-price">7,500 FCFA</div>
+                                    </div>
+                                    <div class="schedule-item">
+                                        <div class="schedule-time">10:30</div>
+                                        <div class="schedule-type">
+                                            VIP Bus
+                                            <div class="schedule-seats">28 seats available</div>
+                                        </div>
+                                        <div class="schedule-price">9,500 FCFA</div>
+                                    </div>
+                                    <div class="schedule-item">
+                                        <div class="schedule-time">14:30</div>
+                                        <div class="schedule-type">
+                                            Standard Bus
+                                            <div class="schedule-seats">40 seats available</div>
+                                        </div>
+                                        <div class="schedule-price">7,500 FCFA</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="route-actions">
                             <a href="index.html#search-form" class="route-btn primary">
@@ -378,5 +592,20 @@
             <p>&copy; 2024 EasyTravel. All rights reserved.</p>
         </div>
     </footer>
+    <script>
+        function showTab(button, tabId) {
+            // Remove active class from all tabs in the same card
+            const card = button.closest('.route-card');
+            const tabs = card.querySelectorAll('.route-tab');
+            const contentTabs = card.querySelectorAll('.route-content-tab');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contentTabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Add active class to clicked tab and its content
+            button.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
 </body>
 </html>
