@@ -286,6 +286,66 @@
             margin-top: 0.25rem;
         }
 
+        .cta-section {
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: var(--white);
+            margin-top: 4rem;
+            border-radius: 1rem;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .cta-button {
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .cta-primary {
+            background: var(--white);
+            color: var(--blue);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-secondary {
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .cta-secondary:hover {
+            background: var(--white);
+            color: var(--blue);
+        }
+
         @media (max-width: 768px) {
             .routes-header {
                 padding: 6rem 1rem 4rem;
@@ -307,6 +367,14 @@
             .route-card {
                 max-width: 500px;
                 margin: 0 auto;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-button {
+                width: 100%;
             }
         }
     </style>
@@ -582,6 +650,17 @@
                 </div>
             </div>
         </div>
+
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Start Your Journey?</h2>
+                <p class="cta-text">Book your tickets now and experience comfortable, reliable travel across Cameroon. Special discounts available for group bookings!</p>
+                <div class="cta-buttons">
+                    <a href="index.html#search-form" class="cta-button cta-primary">Book Now</a>
+                    <a href="contact.html" class="cta-button cta-secondary">Contact Us</a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">

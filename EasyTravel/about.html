@@ -556,6 +556,97 @@
                 padding: 1rem;
             }
         }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: var(--white);
+            margin-top: 4rem;
+            border-radius: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('assets/images/pattern.png') repeat;
+            opacity: 0.1;
+        }
+
+        .cta-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .cta-button {
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-button i {
+            font-size: 1.2rem;
+        }
+
+        .cta-primary {
+            background: var(--white);
+            color: var(--blue);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-secondary {
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .cta-secondary:hover {
+            background: var(--white);
+            color: var(--blue);
+        }
+
+        @media (max-width: 768px) {
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-button {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -748,6 +839,23 @@
                 </div>
             </section>
         </div>
+
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">Join the EasyTravel Family Today!</h2>
+                <p class="cta-text">Experience the difference with Cameroon's most trusted travel partner. Whether you're traveling for business or leisure, we're here to make your journey memorable.</p>
+                <div class="cta-buttons">
+                    <a href="index.html#search-form" class="cta-button cta-primary">
+                        <i class="fas fa-ticket-alt"></i>
+                        Book Your Trip
+                    </a>
+                    <a href="routes.html" class="cta-button cta-secondary">
+                        <i class="fas fa-route"></i>
+                        Explore Routes
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">

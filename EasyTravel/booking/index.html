@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Trip - EasyTravel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #2563eb;
+            --blue-dark: #1e40af;
+            --blue-light: #60a5fa;
+            --blue-50: #eff6ff;
+            --blue-100: #dbeafe;
+            --blue-200: #bfdbfe;
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.5;
+        }
+
+        .booking-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .booking-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .booking-header h1 {
+            font-size: 2.5rem;
+            color: var(--blue-dark);
+            margin-bottom: 1rem;
+        }
+
+        .booking-header p {
+            color: var(--gray-700);
+            font-size: 1.1rem;
+        }
+
+        .booking-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--gray-700);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--gray-200);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px var(--blue-100);
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23374151'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.5rem;
+            padding-right: 2.5rem;
+        }
+
+        .submit-button {
+            background: var(--blue);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .submit-button:hover {
+            background: var(--blue-dark);
+            transform: translateY(-2px);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 1rem;
+            box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.05);
+        }
+
+        .feature i {
+            font-size: 2rem;
+            color: var(--blue);
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            color: var(--gray-800);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature p {
+            color: var(--gray-700);
+            font-size: 0.9rem;
+        }
+
+        .available-buses {
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .available-buses.show {
+            display: block;
+        }
+
+        .bus-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .bus-card {
+            background: var(--white);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .bus-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        }
+
+        .bus-info h3 {
+            color: var(--gray-800);
+            margin-bottom: 0.5rem;
+        }
+
+        .bus-details {
+            display: flex;
+            gap: 2rem;
+            color: var(--gray-700);
+            font-size: 0.9rem;
+        }
+
+        .bus-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .bus-detail i {
+            color: var(--blue);
+        }
+
+        .bus-price {
+            text-align: right;
+        }
+
+        .price-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--blue-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .select-seats {
+            background: var(--blue);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .select-seats:hover {
+            background: var(--blue-dark);
+        }
+
+        .no-buses {
+            text-align: center;
+            padding: 2rem;
+            background: var(--gray-50);
+            border-radius: 0.5rem;
+            color: var(--gray-700);
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .booking-header h1 {
+                font-size: 2rem;
+            }
+
+            .bus-card {
+                grid-template-columns: 1fr;
+            }
+
+            .bus-price {
+                text-align: left;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .bus-details {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="booking-container">
+        <div class="booking-header">
+            <h1>Book Your Journey</h1>
+            <p>Select your travel details and find the perfect bus for your trip</p>
+        </div>
+
+        <form class="booking-form" id="bookingForm">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="departure">Departure City</label>
+                    <select id="departure" name="departure" class="form-control" required>
+                        <option value="">Select departure city</option>
+                        <option value="yaounde">Yaoundé</option>
+                        <option value="douala">Douala</option>
+                        <option value="bamenda">Bamenda</option>
+                        <option value="buea">Buea</option>
+                        <option value="limbe">Limbe</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="destination">Destination City</label>
+                    <select id="destination" name="destination" class="form-control" required>
+                        <option value="">Select destination city</option>
+                        <option value="yaounde">Yaoundé</option>
+                        <option value="douala">Douala</option>
+                        <option value="bamenda">Bamenda</option>
+                        <option value="buea">Buea</option>
+                        <option value="limbe">Limbe</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Travel Date</label>
+                    <input type="date" id="date" name="date" class="form-control" required min="">
+                </div>
+
+                <div class="form-group">
+                    <label for="passengers">Number of Passengers</label>
+                    <select id="passengers" name="passengers" class="form-control" required>
+                        <option value="1">1 Passenger</option>
+                        <option value="2">2 Passengers</option>
+                        <option value="3">3 Passengers</option>
+                        <option value="4">4 Passengers</option>
+                        <option value="5">5 Passengers</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-button">
+                <i class="fas fa-search"></i>
+                Search Available Buses
+            </button>
+        </form>
+
+        <div class="available-buses" id="availableBuses">
+            <h2>Available Buses</h2>
+            <div class="bus-list" id="busList">
+                <!-- Bus cards will be added here dynamically -->
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-clock"></i>
+                <h3>Instant Booking</h3>
+                <p>Book your tickets instantly and receive immediate confirmation</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Secure Payment</h3>
+                <p>Your payment information is protected with industry-standard security</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-headset"></i>
+                <h3>24/7 Support</h3>
+                <p>Our customer service team is available around the clock to assist you</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Set minimum date to today
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.min = today;
+        dateInput.value = today;
+
+        // Prevent selecting same city for departure and destination
+        const departureSelect = document.getElementById('departure');
+        const destinationSelect = document.getElementById('destination');
+        const bookingForm = document.getElementById('bookingForm');
+        const availableBuses = document.getElementById('availableBuses');
+        const busList = document.getElementById('busList');
+
+        function updateDestinations() {
+            const departureValue = departureSelect.value;
+            Array.from(destinationSelect.options).forEach(option => {
+                option.disabled = option.value === departureValue;
+            });
+        }
+
+        departureSelect.addEventListener('change', updateDestinations);
+        updateDestinations();
+
+        // Sample bus data - in a real application, this would come from a backend
+        const busData = {
+            'yaounde-douala': [
+                {
+                    name: 'Express Deluxe',
+                    departure: '08:00',
+                    arrival: '12:30',
+                    seats: 25,
+                    price: 5000
+                },
+                {
+                    name: 'Premium Coach',
+                    departure: '10:00',
+                    arrival: '14:30',
+                    seats: 15,
+                    price: 6000
+                },
+                {
+                    name: 'Night Comfort',
+                    departure: '22:00',
+                    arrival: '02:30',
+                    seats: 20,
+                    price: 5500
+                }
+            ],
+            'douala-bamenda': [
+                {
+                    name: 'Mountain Express',
+                    departure: '07:00',
+                    arrival: '13:30',
+                    seats: 22,
+                    price: 6500
+                },
+                {
+                    name: 'Comfort Plus',
+                    departure: '09:00',
+                    arrival: '15:30',
+                    seats: 18,
+                    price: 7000
+                }
+            ]
+        };
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            const departure = departureSelect.value;
+            const destination = destinationSelect.value;
+            const route = `${departure}-${destination}`;
+            
+            // Show the available buses section
+            availableBuses.classList.add('show');
+            
+            // Clear previous results
+            busList.innerHTML = '';
+            
+            // Get buses for the route
+            const buses = busData[route] || [];
+            
+            if (buses.length === 0) {
+                busList.innerHTML = `
+                    <div class="no-buses">
+                        <i class="fas fa-info-circle"></i>
+                        <p>No buses available for this route. Please try a different date or route.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Add bus cards
+            buses.forEach(bus => {
+                const busCard = document.createElement('div');
+                busCard.className = 'bus-card';
+                busCard.innerHTML = `
+                    <div class="bus-info">
+                        <h3>${bus.name}</h3>
+                        <div class="bus-details">
+                            <div class="bus-detail">
+                                <i class="fas fa-clock"></i>
+                                <span>Departure: ${bus.departure}</span>
+                            </div>
+                            <div class="bus-detail">
+                                <i class="fas fa-clock"></i>
+                                <span>Arrival: ${bus.arrival}</span>
+                            </div>
+                            <div class="bus-detail">
+                                <i class="fas fa-chair"></i>
+                                <span>${bus.seats} seats available</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bus-price">
+                        <div class="price-amount">${bus.price} FCFA</div>
+                        <button class="select-seats" onclick="selectSeats('${bus.name}')">
+                            Select Seats
+                        </button>
+                    </div>
+                `;
+                busList.appendChild(busCard);
+            });
+
+            // Scroll to results
+            availableBuses.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function selectSeats(busName) {
+            // Store selected bus info in session storage
+            const departure = departureSelect.value;
+            const destination = destinationSelect.value;
+            const date = dateInput.value;
+            const passengers = document.getElementById('passengers').value;
+            
+            const bookingInfo = {
+                busName,
+                departure,
+                destination,
+                date,
+                passengers
+            };
+            
+            sessionStorage.setItem('bookingInfo', JSON.stringify(bookingInfo));
+            
+            // Redirect to seat selection page
+            window.location.href = 'seat-selection.html';
+        }
+
+        bookingForm.addEventListener('submit', handleFormSubmit);
+    </script>
+</body>
+</html>

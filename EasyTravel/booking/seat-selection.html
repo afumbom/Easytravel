@@ -278,9 +278,21 @@
     </div>
 
     <script>
+        // Load booking info from session storage
+        const bookingInfo = JSON.parse(sessionStorage.getItem('bookingInfo'));
+        if (!bookingInfo) {
+            window.location.href = 'index.html';
+        }
+
+        // Update bus info
+        document.querySelector('.bus-name').textContent = bookingInfo.busName;
+        document.querySelector('.bus-route').textContent = 
+            `${bookingInfo.departure.charAt(0).toUpperCase() + bookingInfo.departure.slice(1)} to 
+             ${bookingInfo.destination.charAt(0).toUpperCase() + bookingInfo.destination.slice(1)} • 
+             ${bookingInfo.date}`;
+
         // Get URL parameters
         const params = new URLSearchParams(window.location.search);
-        const busName = params.get('bus');
         const busType = params.get('type');
         const route = params.get('route');
         const date = params.get('date');
@@ -288,26 +300,14 @@
         const aislePrice = parseInt(params.get('aisle'));
         const frontPrice = parseInt(params.get('front'));
 
-        // Update bus info
-        const busNameElem = document.getElementById('busName');
-        const busRouteElem = document.getElementById('busRoute');
+        // Update summary
         const summaryBusElem = document.getElementById('summaryBus');
         const summaryRouteElem = document.getElementById('summaryRoute');
         const summaryDateElem = document.getElementById('summaryDate');
 
-        if (busName && busType && route && date) {
-            busNameElem.textContent = `${busName} - ${busType}`;
-            busRouteElem.textContent = route;
-            summaryBusElem.textContent = `${busName} ${busType}`;
-            summaryRouteElem.textContent = route;
-            summaryDateElem.textContent = date;
-        } else {
-            busNameElem.textContent = 'Bus Information Not Available';
-            busRouteElem.textContent = 'Route Information Not Available';
-            summaryBusElem.textContent = '-';
-            summaryRouteElem.textContent = '-';
-            summaryDateElem.textContent = '-';
-        }
+        summaryBusElem.textContent = bookingInfo.busName;
+        summaryRouteElem.textContent = route;
+        summaryDateElem.textContent = date;
 
         // Generate seats
         const seatsContainer = document.getElementById('seatsContainer');
@@ -364,7 +364,7 @@
             // Update proceed button to link to payment page when seats are selected
             if (selectedSeatsArray.length > 0) {
                 proceedButton.onclick = () => {
-                    const paymentUrl = `../Payment/payment.html?bus=${encodeURIComponent(busName)}&type=${encodeURIComponent(busType)}&route=${encodeURIComponent(route)}&seats=${encodeURIComponent(seatsList)}&amount=${totalAmount}&date=${encodeURIComponent(date)}`;
+                    const paymentUrl = `../Payment/payment.html?bus=${encodeURIComponent(bookingInfo.busName)}&type=${encodeURIComponent(busType)}&route=${encodeURIComponent(route)}&seats=${encodeURIComponent(seatsList)}&amount=${totalAmount}&date=${encodeURIComponent(date)}`;
                     window.location.href = paymentUrl;
                 };
             }
