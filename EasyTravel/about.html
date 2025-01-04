@@ -647,6 +647,52 @@
                 width: 100%;
             }
         }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            text-align: center;
+            transition: all 0.3s ease;
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 4rem;
+            height: 4rem;
+            background: var(--blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card h3 {
+            color: var(--blue-dark);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--blue);
+            line-height: 1.6;
+        }
     </style>
 </head>
 <body>
@@ -732,6 +778,54 @@
                                 <p>Continuously expanding our partnerships to offer more routes and options across Africa.</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-section">
+                <h2>Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-ticket-alt"></i>
+                        </div>
+                        <h3>Easy Ticket Booking</h3>
+                        <p>Book bus tickets online with just a few clicks. Compare prices, schedules, and choose your preferred seats instantly.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <h3>Route Comparison</h3>
+                        <p>Compare different routes, bus agencies, and prices to find the best option for your journey across Cameroon.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h3>Secure Payments</h3>
+                        <p>Multiple secure payment options available. Book your tickets with confidence using our protected payment system.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h3>Real-time Updates</h3>
+                        <p>Get instant booking confirmations and timely updates about your journey via email and SMS.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Group Bookings</h3>
+                        <p>Special handling for group bookings. Contact our support team for customized group travel arrangements.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>24/7 Support</h3>
+                        <p>Our customer service team is always ready to assist you with your bookings and inquiries.</p>
                     </div>
                 </div>
             </section>
