@@ -4,168 +4,354 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select Your Seats - EasyTravel</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #64748b;
+            --success-color: #16a34a;
+            --error-color: #dc2626;
+            --background-color: #f8fafc;
+            --border-color: #e2e8f0;
+        }
+
+        .seat-selection-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+        }
+
+        .bus-layout {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .bus-info {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .bus-name {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .bus-route {
+            color: var(--secondary-color);
+            font-size: 16px;
+        }
+
+        .seats-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .seat {
+            aspect-ratio: 1;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .seat:not(.occupied):hover {
+            border-color: var(--primary-color);
+            background: #f8fafc;
+        }
+
+        .seat.selected {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .seat.occupied {
+            background: #f1f5f9;
+            border-color: #e2e8f0;
+            cursor: not-allowed;
+            color: var(--secondary-color);
+        }
+
+        .seat-type {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: var(--secondary-color);
+            white-space: nowrap;
+        }
+
+        .seat-price {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: var(--secondary-color);
+            white-space: nowrap;
+        }
+
+        .booking-summary {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 24px;
+        }
+
+        .summary-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 24px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            color: var(--secondary-color);
+        }
+
+        .summary-item.total {
+            font-weight: 600;
+            color: var(--primary-color);
+            border-top: 1px solid var(--border-color);
+            margin-top: 16px;
+            padding-top: 16px;
+        }
+
+        .proceed-payment {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 16px 24px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            margin-top: 24px;
+            gap: 8px;
+        }
+
+        .proceed-payment:hover {
+            background: #1e293b;
+            transform: translateY(-2px);
+        }
+
+        .proceed-payment:disabled {
+            background: var(--secondary-color);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .legend {
+            display: flex;
+            gap: 24px;
+            margin-top: 48px;
+            justify-content: center;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--secondary-color);
+            font-size: 14px;
+        }
+
+        .legend-box {
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        .legend-box.selected {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .legend-box.occupied {
+            background: #f1f5f9;
+            border-color: #e2e8f0;
+        }
+
+        @media (max-width: 768px) {
+            .seat-selection-container {
+                grid-template-columns: 1fr;
+            }
+
+            .seats-container {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 12px;
+            }
+
+            .seat {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav container">
-            <a href="../index.html" class="logo">
-                <img src="../assets/images/logo.png" alt="EasyTravel Logo">
-                <span>EasyTravel</span>
-            </a>
-        </nav>
-    </header>
-
-    <main class="seat-selection-page">
-        <div class="container">
-            <div class="booking-header">
-                <h1>Select Your Seats</h1>
-                <div class="trip-details">
-                    <div class="bus-info">
-                        <h2 class="bus-name">General Express</h2>
-                        <p class="route">Bamenda → Douala</p>
-                        <p class="departure">Departure: <span>06:30 AM</span></p>
-                    </div>
-                    <div class="date-info">
-                        <p class="date">January 4, 2025</p>
-                        <p class="duration">Duration: 5h</p>
-                    </div>
-                </div>
+    <div class="seat-selection-container">
+        <div class="bus-layout">
+            <div class="bus-info">
+                <h1 class="bus-name" id="busName">Loading...</h1>
+                <div class="bus-route" id="busRoute">Loading...</div>
             </div>
 
-            <div class="seat-selection-container">
-                <div class="seat-map">
-                    <div class="bus-layout">
-                        <div class="driver-section">
-                            <i class="fas fa-steering-wheel"></i>
-                            <span>Driver</span>
-                        </div>
-                        <div class="seats-grid">
-                            <!-- Seats will be dynamically generated here -->
-                        </div>
-                    </div>
-                    <div class="seat-legend">
-                        <div class="legend-item">
-                            <div class="seat-demo available"></div>
-                            <span>Available</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="seat-demo selected"></div>
-                            <span>Selected</span>
-                        </div>
-                        <div class="legend-item">
-                            <div class="seat-demo occupied"></div>
-                            <span>Occupied</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="seats-container" id="seatsContainer">
+                <!-- Seats will be generated here -->
+            </div>
 
-                <div class="booking-summary">
-                    <h3>Booking Summary</h3>
-                    <div class="summary-details">
-                        <div class="summary-item">
-                            <span>Selected Seats:</span>
-                            <span id="selectedSeatsDisplay">None</span>
-                        </div>
-                        <div class="summary-item">
-                            <span>Price per seat:</span>
-                            <span id="pricePerSeat">20,000 FCFA</span>
-                        </div>
-                        <div class="summary-item total">
-                            <span>Total Amount:</span>
-                            <span id="totalAmount">0 FCFA</span>
-                        </div>
-                    </div>
-                    <button id="proceedToPayment" class="proceed-btn" disabled>
-                        Proceed to Payment
-                    </button>
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-box"></div>
+                    <span>Available</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-box selected"></div>
+                    <span>Selected</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-box occupied"></div>
+                    <span>Occupied</span>
                 </div>
             </div>
         </div>
-    </main>
+
+        <div class="booking-summary">
+            <h2 class="summary-title">Booking Summary</h2>
+            <div class="summary-item">
+                <span>Bus Service</span>
+                <span id="summaryBus">-</span>
+            </div>
+            <div class="summary-item">
+                <span>Route</span>
+                <span id="summaryRoute">-</span>
+            </div>
+            <div class="summary-item">
+                <span>Travel Date</span>
+                <span id="summaryDate">-</span>
+            </div>
+            <div class="summary-item">
+                <span>Selected Seats</span>
+                <span id="summarySeats">-</span>
+            </div>
+            <div class="summary-item total">
+                <span>Total Amount</span>
+                <span id="summaryAmount">0 FCFA</span>
+            </div>
+
+            <button class="proceed-payment" id="proceedPayment" disabled>
+                <span>Proceed to Payment</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const seatsGrid = document.querySelector('.seats-grid');
-            const selectedSeatsDisplay = document.getElementById('selectedSeatsDisplay');
-            const totalAmountDisplay = document.getElementById('totalAmount');
-            const proceedBtn = document.getElementById('proceedToPayment');
-            const pricePerSeat = 20000; // Price in FCFA
-            let selectedSeats = [];
+        // Get URL parameters
+        const params = new URLSearchParams(window.location.search);
+        const busName = params.get('bus');
+        const busType = params.get('type');
+        const route = params.get('route');
+        const date = params.get('date');
+        const windowPrice = parseInt(params.get('window'));
+        const aislePrice = parseInt(params.get('aisle'));
+        const frontPrice = parseInt(params.get('front'));
 
-            // Generate seats
-            const rows = 8;
-            const seatsPerRow = 4;
-            const occupiedSeats = ['A1', 'B3', 'C4', 'F2']; // Example of pre-occupied seats
+        // Update bus info
+        document.getElementById('busName').textContent = `${busName} - ${busType}`;
+        document.getElementById('busRoute').textContent = route;
+        document.getElementById('summaryBus').textContent = `${busName} ${busType}`;
+        document.getElementById('summaryRoute').textContent = route;
+        document.getElementById('summaryDate').textContent = date;
 
-            for (let i = 0; i < rows; i++) {
-                const row = document.createElement('div');
-                row.className = 'seat-row';
-                const rowLetter = String.fromCharCode(65 + i);
+        // Generate seats
+        const seatsContainer = document.getElementById('seatsContainer');
+        const totalSeats = 32; // 8 rows x 4 seats
+        const occupiedSeats = ['A1', 'B3', 'C2', 'D4']; // Example occupied seats
+        const selectedSeats = new Set();
 
-                for (let j = 0; j < seatsPerRow; j++) {
-                    const seatNumber = rowLetter + (j + 1);
-                    const seat = document.createElement('div');
-                    seat.className = 'seat';
-                    seat.dataset.seatNumber = seatNumber;
-                    
-                    if (occupiedSeats.includes(seatNumber)) {
-                        seat.classList.add('occupied');
-                    } else {
-                        seat.classList.add('available');
-                    }
-
-                    // Add seat number
-                    const seatLabel = document.createElement('span');
-                    seatLabel.className = 'seat-label';
-                    seatLabel.textContent = seatNumber;
-                    seat.appendChild(seatLabel);
-
-                    // Add click handler for available seats
-                    if (!occupiedSeats.includes(seatNumber)) {
-                        seat.addEventListener('click', () => toggleSeat(seat, seatNumber));
-                    }
-
-                    row.appendChild(seat);
-                }
-                seatsGrid.appendChild(row);
-            }
-
-            function toggleSeat(seat, seatNumber) {
-                if (seat.classList.contains('occupied')) return;
-
-                seat.classList.toggle('selected');
+        for (let row = 0; row < 8; row++) {
+            for (let col = 0; col < 4; col++) {
+                const seatNumber = String.fromCharCode(65 + row) + (col + 1);
+                const isWindow = col === 0 || col === 3;
+                const isFront = row < 2;
+                const price = isFront ? frontPrice : (isWindow ? windowPrice : aislePrice);
+                const type = isFront ? 'Front' : (isWindow ? 'Window' : 'Aisle');
                 
-                if (seat.classList.contains('selected')) {
-                    selectedSeats.push(seatNumber);
-                } else {
-                    selectedSeats = selectedSeats.filter(s => s !== seatNumber);
+                const seat = document.createElement('div');
+                seat.className = `seat${occupiedSeats.includes(seatNumber) ? ' occupied' : ''}`;
+                seat.innerHTML = `
+                    <span class="seat-type">${type}</span>
+                    ${seatNumber}
+                    <span class="seat-price">${price.toLocaleString()} FCFA</span>
+                `;
+
+                if (!occupiedSeats.includes(seatNumber)) {
+                    seat.addEventListener('click', () => toggleSeat(seat, seatNumber, price, type));
                 }
 
-                updateSummary();
+                seatsContainer.appendChild(seat);
             }
+        }
 
-            function updateSummary() {
-                if (selectedSeats.length > 0) {
-                    selectedSeatsDisplay.textContent = selectedSeats.join(', ');
-                    const total = selectedSeats.length * pricePerSeat;
-                    totalAmountDisplay.textContent = `${total.toLocaleString()} FCFA`;
-                    proceedBtn.disabled = false;
-                } else {
-                    selectedSeatsDisplay.textContent = 'None';
-                    totalAmountDisplay.textContent = '0 FCFA';
-                    proceedBtn.disabled = true;
-                }
+        function toggleSeat(seatElement, seatNumber, price, type) {
+            const isSelected = seatElement.classList.toggle('selected');
+            
+            if (isSelected) {
+                selectedSeats.add({ number: seatNumber, price, type });
+            } else {
+                selectedSeats.delete([...selectedSeats].find(seat => seat.number === seatNumber));
             }
+            
+            updateSummary();
+        }
 
-            proceedBtn.addEventListener('click', () => {
-                // Here we'll add the payment processing logic
-                alert('Proceeding to payment for seats: ' + selectedSeats.join(', '));
-            });
-        });
+        function updateSummary() {
+            const selectedSeatsArray = [...selectedSeats];
+            const totalAmount = selectedSeatsArray.reduce((sum, seat) => sum + seat.price, 0);
+            const seatsList = selectedSeatsArray.map(seat => `${seat.number} (${seat.type})`).join(', ');
+
+            document.getElementById('summarySeats').textContent = seatsList || '-';
+            document.getElementById('summaryAmount').textContent = `${totalAmount.toLocaleString()} FCFA`;
+            
+            const proceedButton = document.getElementById('proceedPayment');
+            proceedButton.disabled = selectedSeatsArray.length === 0;
+
+            // Update proceed button to link to payment page when seats are selected
+            if (selectedSeatsArray.length > 0) {
+                proceedButton.onclick = () => {
+                    const paymentUrl = `../Payment/payment.html?bus=${encodeURIComponent(busName)}&type=${encodeURIComponent(busType)}&route=${encodeURIComponent(route)}&seats=${encodeURIComponent(seatsList)}&amount=${totalAmount}&date=${encodeURIComponent(date)}`;
+                    window.location.href = paymentUrl;
+                };
+            }
+        }
     </script>
 </body>
 </html>
