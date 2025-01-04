@@ -59,7 +59,7 @@
 
         .seat {
             aspect-ratio: 1;
-            border: 2px solid var(--border-color);
+            border: 2px solid #3b82f6;
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -67,11 +67,14 @@
             cursor: pointer;
             transition: all 0.2s;
             position: relative;
+            background: #eff6ff;
+            color: #1e40af;
+            font-weight: 500;
         }
 
         .seat:not(.occupied):hover {
             border-color: var(--primary-color);
-            background: #f8fafc;
+            background: #dbeafe;
         }
 
         .seat.selected {
@@ -81,10 +84,10 @@
         }
 
         .seat.occupied {
-            background: #f1f5f9;
-            border-color: #e2e8f0;
+            background: #fee2e2;
+            border-color: #ef4444;
             cursor: not-allowed;
-            color: var(--secondary-color);
+            color: #dc2626;
         }
 
         .seat-type {
@@ -185,8 +188,9 @@
         .legend-box {
             width: 16px;
             height: 16px;
-            border: 2px solid var(--border-color);
+            border: 2px solid #3b82f6;
             border-radius: 4px;
+            background: #eff6ff;
         }
 
         .legend-box.selected {
@@ -195,8 +199,8 @@
         }
 
         .legend-box.occupied {
-            background: #f1f5f9;
-            border-color: #e2e8f0;
+            background: #fee2e2;
+            border-color: #ef4444;
         }
 
         @media (max-width: 768px) {
@@ -285,11 +289,25 @@
         const frontPrice = parseInt(params.get('front'));
 
         // Update bus info
-        document.getElementById('busName').textContent = `${busName} - ${busType}`;
-        document.getElementById('busRoute').textContent = route;
-        document.getElementById('summaryBus').textContent = `${busName} ${busType}`;
-        document.getElementById('summaryRoute').textContent = route;
-        document.getElementById('summaryDate').textContent = date;
+        const busNameElem = document.getElementById('busName');
+        const busRouteElem = document.getElementById('busRoute');
+        const summaryBusElem = document.getElementById('summaryBus');
+        const summaryRouteElem = document.getElementById('summaryRoute');
+        const summaryDateElem = document.getElementById('summaryDate');
+
+        if (busName && busType && route && date) {
+            busNameElem.textContent = `${busName} - ${busType}`;
+            busRouteElem.textContent = route;
+            summaryBusElem.textContent = `${busName} ${busType}`;
+            summaryRouteElem.textContent = route;
+            summaryDateElem.textContent = date;
+        } else {
+            busNameElem.textContent = 'Bus Information Not Available';
+            busRouteElem.textContent = 'Route Information Not Available';
+            summaryBusElem.textContent = '-';
+            summaryRouteElem.textContent = '-';
+            summaryDateElem.textContent = '-';
+        }
 
         // Generate seats
         const seatsContainer = document.getElementById('seatsContainer');
@@ -310,7 +328,6 @@
                 seat.innerHTML = `
                     <span class="seat-type">${type}</span>
                     ${seatNumber}
-                    <span class="seat-price">${price.toLocaleString()} FCFA</span>
                 `;
 
                 if (!occupiedSeats.includes(seatNumber)) {
