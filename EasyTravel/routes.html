@@ -5,124 +5,144 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Routes - EasyTravel</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .routes-container {
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 120px auto 60px;
             padding: 0 20px;
         }
 
         .routes-header {
             text-align: center;
             margin-bottom: 60px;
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
+            color: var(--white);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         }
 
         .routes-header h1 {
-            font-size: 36px;
-            color: var(--primary-color);
-            margin-bottom: 16px;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            letter-spacing: -1px;
         }
 
         .routes-header p {
-            color: var(--secondary-color);
-            font-size: 18px;
+            font-size: 1.25rem;
             max-width: 600px;
             margin: 0 auto;
+            opacity: 0.9;
         }
 
         .routes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
-            margin-bottom: 60px;
+            padding: 20px;
         }
 
         .route-card {
-            background: white;
+            background: var(--white);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
 
         .route-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
         }
 
         .route-image {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
         }
 
         .route-content {
-            padding: 24px;
+            padding: 2rem;
         }
 
         .route-title {
-            font-size: 24px;
-            color: var(--primary-color);
-            margin-bottom: 16px;
+            font-size: 1.5rem;
+            color: var(--blue-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
 
         .route-details {
-            margin-bottom: 24px;
+            margin-bottom: 1.5rem;
         }
 
         .route-detail {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-            color: var(--secondary-color);
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--blue);
         }
 
         .route-detail i {
-            color: var(--primary-color);
-            width: 20px;
+            color: var(--blue-dark);
+            font-size: 1.25rem;
+            width: 24px;
         }
 
         .route-price {
-            font-size: 24px;
-            color: var(--primary-color);
-            font-weight: bold;
-            margin-bottom: 24px;
+            font-size: 1.5rem;
+            color: var(--blue-dark);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
         }
 
         .route-actions {
             display: flex;
-            gap: 12px;
+            gap: 1rem;
         }
 
         .route-btn {
             flex: 1;
-            padding: 12px;
+            padding: 1rem;
             text-align: center;
             border-radius: 6px;
             font-weight: 600;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            text-decoration: none;
         }
 
         .route-btn.primary {
-            background: var(--primary-color);
-            color: white;
+            background: var(--blue-dark);
+            color: var(--white);
         }
 
         .route-btn.primary:hover {
-            background: #1e293b;
+            background: var(--blue);
+            transform: translateY(-2px);
         }
 
         .route-btn.secondary {
-            background: #f1f5f9;
-            color: var(--primary-color);
+            background: var(--gray-100);
+            color: var(--blue-dark);
         }
 
         .route-btn.secondary:hover {
-            background: #e2e8f0;
+            background: var(--gray-50);
+            transform: translateY(-2px);
         }
 
         @media (max-width: 768px) {
+            .routes-container {
+                margin-top: 100px;
+            }
+
+            .routes-header h1 {
+                font-size: 2.5rem;
+            }
+
             .routes-grid {
                 grid-template-columns: 1fr;
             }
@@ -130,31 +150,34 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <a href="index.html">EasyTravel</a>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/" class="logo">
+                <img src="assets/images/logo.png" alt="EasyTravel Logo">
+                <span>EasyTravel</span>
+            </a>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="routes.html" class="active">Routes</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="booking/login.html" class="btn btn-primary">Login</a></li>
             </ul>
-            <div class="auth-buttons">
-                <a href="#" class="btn btn-outline">Sign In</a>
-                <a href="#" class="btn btn-primary">Sign Up</a>
-            </div>
         </nav>
     </header>
 
     <main>
-        <div class="routes-container">
-            <div class="routes-header">
-                <h1>Our Popular Routes</h1>
-                <p>Discover our most traveled routes with competitive prices and comfortable buses.</p>
-            </div>
+        <div class="routes-header">
+            <h1>Our Popular Routes</h1>
+            <p>Discover our most traveled routes with competitive prices and comfortable buses.</p>
+        </div>
 
+        <div class="routes-container">
             <div class="routes-grid">
                 <div class="route-card">
                     <img src="assets/images/yaounde-douala.jpg" alt="Yaounde to Douala" class="route-image">
@@ -243,13 +266,13 @@
         </div>
     </main>
 
-    <footer>
+    <footer class="footer">
         <div class="footer-content">
-            <div class="footer-section">
-                <h3>EasyTravel</h3>
-                <p>Making travel easier across Cameroon</p>
+            <div class="footer-logo">
+                <img src="assets/images/logo.png" alt="EasyTravel Logo">
+                <span>EasyTravel</span>
             </div>
-            <div class="footer-section">
+            <div class="footer-links">
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -258,12 +281,13 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
-            <div class="footer-section">
+            <div class="footer-contact">
                 <h3>Contact Us</h3>
-                <p>Email: info@easytravel.com</p>
-                <p>Phone: +237 123 456 789</p>
+                <p><i class="fas fa-phone"></i> +237 123 456 789</p>
+                <p><i class="fas fa-envelope"></i> info@easytravel.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Travel Street, Yaounde</p>
             </div>
-            <div class="footer-section">
+            <div class="footer-social">
                 <h3>Follow Us</h3>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook"></i></a>
