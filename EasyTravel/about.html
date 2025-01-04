@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - EasyTravel</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .about-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .about-header h1 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+        }
+
+        .about-header p {
+            color: var(--secondary-color);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .story-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+
+        .story-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .story-content h2 {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 24px;
+        }
+
+        .story-content p {
+            color: var(--secondary-color);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .values-section {
+            margin-bottom: 60px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: #f1f5f9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .value-icon i {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .value-card h3 {
+            font-size: 20px;
+            color: var(--primary-color);
+            margin-bottom: 16px;
+        }
+
+        .value-card p {
+            color: var(--secondary-color);
+            line-height: 1.6;
+        }
+
+        .team-section {
+            margin-bottom: 60px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .team-content {
+            padding: 24px;
+            text-align: center;
+        }
+
+        .team-content h3 {
+            font-size: 20px;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .team-content .position {
+            color: var(--secondary-color);
+            margin-bottom: 16px;
+        }
+
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .team-social a {
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        .team-social a:hover {
+            color: #1e293b;
+        }
+
+        @media (max-width: 768px) {
+            .story-section {
+                grid-template-columns: 1fr;
+            }
+
+            .story-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">EasyTravel</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="routes.html">Routes</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="#" class="btn btn-outline">Sign In</a>
+                <a href="#" class="btn btn-primary">Sign Up</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="about-container">
+            <div class="about-header">
+                <h1>About EasyTravel</h1>
+                <p>Your trusted partner in comfortable and reliable bus travel across Cameroon.</p>
+            </div>
+
+            <section class="story-section">
+                <img src="assets/images/about-story.jpg" alt="EasyTravel Story" class="story-image">
+                <div class="story-content">
+                    <h2>Our Story</h2>
+                    <p>Founded in 2020, EasyTravel was born from a simple idea: to make bus travel in Cameroon more accessible, comfortable, and enjoyable for everyone.</p>
+                    <p>What started as a small operation with just two buses has grown into one of Cameroon's most trusted transportation networks, serving thousands of passengers daily across multiple cities.</p>
+                    <p>Our commitment to safety, comfort, and customer satisfaction has earned us the trust of our passengers and established us as a leader in the transportation industry.</p>
+                </div>
+            </section>
+
+            <section class="values-section">
+                <div class="section-title">
+                    <h2>Our Values</h2>
+                </div>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Safety First</h3>
+                        <p>Your safety is our top priority. We maintain our vehicles to the highest standards and employ experienced drivers.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Customer Focus</h3>
+                        <p>We put our customers at the heart of everything we do, ensuring a pleasant travel experience from booking to arrival.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Reliability</h3>
+                        <p>We understand the importance of punctuality and strive to maintain consistent and reliable service.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="team-section">
+                <div class="section-title">
+                    <h2>Our Team</h2>
+                </div>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <img src="assets/images/team1.jpg" alt="John Doe" class="team-image">
+                        <div class="team-content">
+                            <h3>John Doe</h3>
+                            <div class="position">CEO & Founder</div>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="assets/images/team2.jpg" alt="Jane Smith" class="team-image">
+                        <div class="team-content">
+                            <h3>Jane Smith</h3>
+                            <div class="position">Operations Manager</div>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="assets/images/team3.jpg" alt="Mike Johnson" class="team-image">
+                        <div class="team-content">
+                            <h3>Mike Johnson</h3>
+                            <div class="position">Customer Service Head</div>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>EasyTravel</h3>
+                <p>Making travel easier across Cameroon</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="routes.html">Routes</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@easytravel.com</p>
+                <p>Phone: +237 123 456 789</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 EasyTravel. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
