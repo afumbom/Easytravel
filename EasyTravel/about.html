@@ -52,7 +52,22 @@
             color: var(--blue-dark);
             font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .about-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--blue);
+            border-radius: 3px;
         }
 
         .about-grid {
@@ -103,20 +118,26 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
+            margin-top: 2rem;
         }
 
         .team-card {
             text-align: center;
             transition: all 0.3s ease;
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
         }
 
         .team-card:hover {
             transform: translateY(-0.5rem);
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
         }
 
         .team-image {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             margin: 0 auto 1.5rem;
             overflow: hidden;
@@ -139,6 +160,7 @@
         .team-info p {
             color: var(--blue);
             margin-bottom: 1rem;
+            font-weight: 500;
         }
 
         .team-social {
@@ -150,11 +172,29 @@
         .team-social a {
             color: var(--blue);
             transition: all 0.3s ease;
+            font-size: 1.25rem;
         }
 
         .team-social a:hover {
             color: var(--blue-dark);
             transform: translateY(-0.25rem);
+        }
+
+        @media (max-width: 1200px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-image {
+                width: 150px;
+                height: 150px;
+            }
         }
 
         .stats-grid {
@@ -189,6 +229,73 @@
             font-weight: 500;
         }
 
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .story-image {
+            width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+        }
+
+        .story-text {
+            color: var(--blue);
+            line-height: 1.6;
+        }
+
+        .story-text p {
+            margin-bottom: 1rem;
+        }
+
+        .values-image {
+            margin: -1rem -3rem 2rem;
+        }
+
+        .values-hero {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .values-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--blue);
+            opacity: 0.5;
+            border-radius: 1rem;
+        }
+
+        .community-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .community-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .community-image:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+        }
+
         @media (max-width: 768px) {
             .about-header {
                 padding: 6rem 1rem 4rem;
@@ -208,6 +315,245 @@
 
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .story-content {
+                grid-template-columns: 1fr;
+            }
+
+            .values-image {
+                margin: -1rem -2rem 2rem;
+            }
+
+            .values-hero {
+                height: 200px;
+            }
+
+            .community-images {
+                grid-template-columns: 1fr;
+            }
+
+            .community-image {
+                height: 300px;
+            }
+        }
+
+        .vision-content {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .vision-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .vision-statement {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--blue-dark);
+            text-align: center;
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        .vision-description {
+            color: var(--blue);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .vision-points {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .vision-point {
+            text-align: center;
+        }
+
+        .vision-point i {
+            font-size: 2rem;
+            color: var(--blue);
+            margin-bottom: 1rem;
+        }
+
+        .vision-point h3 {
+            color: var(--blue-dark);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .vision-point p {
+            color: var(--blue);
+            line-height: 1.6;
+        }
+
+        .values-image {
+            position: relative;
+            margin: -1rem -3rem 2rem;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+
+        .values-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(var(--blue-dark-rgb), 0.9) 0%, rgba(var(--blue-rgb), 0.85) 100%);
+            z-index: 1;
+        }
+
+        .values-hero {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transform: scale(1.1);
+            filter: blur(2px);
+        }
+
+        .journey-image {
+            margin-top: 2rem;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+        }
+
+        .journey-hero {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .journey-image:hover .journey-hero {
+            transform: scale(1.05);
+        }
+
+        .journey-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .journey-text {
+            color: var(--blue);
+        }
+
+        .journey-text h3 {
+            color: var(--blue-dark);
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .journey-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .journey-highlights {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .highlight {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--gray-50);
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .highlight:hover {
+            transform: translateY(-0.25rem);
+            background: var(--white);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight i {
+            font-size: 1.5rem;
+            color: var(--blue);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .highlight span {
+            color: var(--blue-dark);
+            font-weight: 600;
+        }
+
+        @media (max-width: 992px) {
+            .vision-points {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .vision-image {
+                height: 300px;
+            }
+
+            .vision-statement {
+                font-size: 1.25rem;
+            }
+
+            .vision-points {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .values-image {
+                margin: -1rem -2rem 2rem;
+            }
+
+            .values-hero {
+                height: 250px;
+            }
+
+            .journey-hero {
+                height: 300px;
+            }
+
+            .journey-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .journey-text {
+                order: 2;
+            }
+
+            .journey-image {
+                order: 1;
+            }
+
+            .vision-description {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .journey-highlights {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .highlight {
+                padding: 1rem;
             }
         }
     </style>
@@ -243,8 +589,13 @@
         <div class="about-container">
             <section class="about-section">
                 <h2>Our Story</h2>
-                <p>EasyTravel was founded with a simple mission: to make bus travel in Cameroon comfortable, reliable, and truly easy. What started as a small operation has grown into one of the country's most trusted transportation services.</p>
-                <p>We understand that every journey matters, whether it's a business trip, family visit, or adventure exploration. That's why we've built our service around the needs of our passengers, focusing on safety, comfort, and convenience.</p>
+                <div class="story-content">
+                    <img src="assets/images/about.png" alt="About EasyTravel" class="story-image">
+                    <div class="story-text">
+                        <p>EasyTravel was founded with a simple mission: to make bus travel in Cameroon comfortable, reliable, and truly easy. What started as a small operation has grown into one of the country's most trusted transportation services.</p>
+                        <p>We understand that every journey matters, whether it's a business trip, family visit, or adventure exploration. That's why we've built our service around the needs of our passengers, focusing on safety, comfort, and convenience.</p>
+                    </div>
+                </div>
                 
                 <div class="stats-grid">
                     <div class="stat-item">
@@ -267,7 +618,39 @@
             </section>
 
             <section class="about-section">
+                <h2>Our Vision</h2>
+                <div class="vision-content">
+                    <img src="assets/images/group.png" alt="Our Vision" class="vision-image">
+                    <div class="vision-text">
+                        <p class="vision-statement">"To revolutionize travel in Cameroon by providing the most reliable, comfortable, and accessible transportation network."</p>
+                        <p class="vision-description">At EasyTravel, we envision a future where every journey becomes an experience to cherish. Our commitment goes beyond just transportation – we're building connections, fostering communities, and creating opportunities across Cameroon.</p>
+                        <div class="vision-points">
+                            <div class="vision-point">
+                                <i class="fas fa-road"></i>
+                                <h3>Connecting Communities</h3>
+                                <p>Building bridges between cities and people, making every corner of Cameroon accessible to all.</p>
+                            </div>
+                            <div class="vision-point">
+                                <i class="fas fa-handshake"></i>
+                                <h3>Excellence in Service</h3>
+                                <p>Setting new standards in travel comfort and reliability, ensuring every journey exceeds expectations.</p>
+                            </div>
+                            <div class="vision-point">
+                                <i class="fas fa-globe-africa"></i>
+                                <h3>Sustainable Growth</h3>
+                                <p>Expanding our network thoughtfully while promoting eco-friendly practices and supporting local communities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-section">
                 <h2>Our Values</h2>
+                <div class="values-image">
+                    <div class="values-overlay"></div>
+                    <img src="assets/images/teamwork.png" alt="Our Values" class="values-hero">
+                </div>
                 <div class="about-grid">
                     <div class="value-card">
                         <div class="value-icon">
@@ -298,11 +681,11 @@
                 <div class="team-grid">
                     <div class="team-card">
                         <div class="team-image">
-                            <img src="assets/images/team/ceo.jpg" alt="CEO">
+                            <img src="assets/images/Ceo.png" alt="CEO">
                         </div>
                         <div class="team-info">
-                            <h3>John Doe</h3>
-                            <p>CEO & Founder</p>
+                            <h3>John Mark</h3>
+                            <p>CEO</p>
                             <div class="team-social">
                                 <a href="#"><i class="fab fa-linkedin"></i></a>
                                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -311,11 +694,11 @@
                     </div>
                     <div class="team-card">
                         <div class="team-image">
-                            <img src="assets/images/team/operations.jpg" alt="Operations Manager">
+                            <img src="assets/images/servicelead.png" alt="Co-Founder">
                         </div>
                         <div class="team-info">
-                            <h3>Jane Smith</h3>
-                            <p>Operations Manager</p>
+                            <h3>Sarah Wilson</h3>
+                            <p>Co-Founder</p>
                             <div class="team-social">
                                 <a href="#"><i class="fab fa-linkedin"></i></a>
                                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -324,16 +707,43 @@
                     </div>
                     <div class="team-card">
                         <div class="team-image">
-                            <img src="assets/images/team/customer-service.jpg" alt="Customer Service Lead">
+                            <img src="assets/images/founder.png" alt="Service Lead">
                         </div>
                         <div class="team-info">
-                            <h3>Mike Johnson</h3>
-                            <p>Customer Service Lead</p>
+                            <h3>Sam Hall</h3>
+                            <p>CTO</p>
                             <div class="team-social">
                                 <a href="#"><i class="fab fa-linkedin"></i></a>
                                 <a href="#"><i class="fab fa-twitter"></i></a>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-section">
+                <div class="journey-content">
+                    <div class="journey-text">
+                        <h3>Be Part of Our Story</h3>
+                        <p>Since 2020, EasyTravel has been more than just a transportation company – we've been a partner in countless journeys, celebrations, and homecomings. Our commitment to excellence has made us one of Cameroon's most trusted names in travel.</p>
+                        <p>Today, we invite you to be part of our continuing story. Whether you're a passenger, partner, or potential team member, there's a place for you in the EasyTravel family.</p>
+                        <div class="journey-highlights">
+                            <div class="highlight">
+                                <i class="fas fa-users"></i>
+                                <span>Growing Community</span>
+                            </div>
+                            <div class="highlight">
+                                <i class="fas fa-map-marked-alt"></i>
+                                <span>Expanding Network</span>
+                            </div>
+                            <div class="highlight">
+                                <i class="fas fa-star"></i>
+                                <span>Excellence in Service</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="journey-image">
+                        <img src="assets/images/group3.png" alt="Join Our Journey" class="journey-hero">
                     </div>
                 </div>
             </section>
