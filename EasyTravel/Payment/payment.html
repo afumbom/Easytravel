@@ -4,205 +4,337 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment - EasyTravel</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header class="header">
-        <nav class="nav container">
-            <a href="../index.html" class="logo">
-                <img src="../assets/images/logo.png" alt="EasyTravel Logo">
-                <span>EasyTravel</span>
-            </a>
-        </nav>
-    </header>
+    <div class="payment-container">
+        <div class="payment-header">
+            <h1>Complete Your Booking</h1>
+            <p>Please review your booking details and select a payment method</p>
+        </div>
 
-    <main class="payment-page">
-        <div class="container">
-            <div class="payment-grid">
-                <!-- Booking Summary Section -->
-                <div class="booking-summary">
-                    <h2>Booking Summary</h2>
-                    <div class="summary-details">
-                        <div class="summary-item">
-                            <span class="label">Bus Service:</span>
-                            <span class="value" id="busName">General Express (VIP)</span>
+        <div class="payment-content">
+            <div class="booking-summary">
+                <h2>Booking Summary</h2>
+                <div class="summary-details">
+                    <div class="summary-item">
+                        <i class="fas fa-bus"></i>
+                        <div class="item-details">
+                            <span class="label">Bus Service</span>
+                            <span class="value" id="busName">General Express VIP</span>
                         </div>
-                        <div class="summary-item">
-                            <span class="label">Route:</span>
-                            <span class="value">Bamenda → Douala</span>
+                    </div>
+                    <div class="summary-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="item-details">
+                            <span class="label">Route</span>
+                            <span class="value" id="route">Bamenda → Douala</span>
                         </div>
-                        <div class="summary-item">
-                            <span class="label">Date:</span>
+                    </div>
+                    <div class="summary-item">
+                        <i class="fas fa-calendar"></i>
+                        <div class="item-details">
+                            <span class="label">Travel Date</span>
                             <span class="value" id="travelDate">January 4, 2025</span>
                         </div>
-                        <div class="summary-item">
-                            <span class="label">Departure:</span>
-                            <span class="value">06:30 AM</span>
+                    </div>
+                    <div class="summary-item">
+                        <i class="fas fa-chair"></i>
+                        <div class="item-details">
+                            <span class="label">Selected Seats</span>
+                            <span class="value" id="selectedSeats">A1, A2 (Window)</span>
                         </div>
-                        <div class="summary-item">
-                            <span class="label">Selected Seats:</span>
-                            <span class="value" id="selectedSeats">A1, B2 (Window)</span>
-                        </div>
-                        <div class="summary-item total">
-                            <span class="label">Total Amount:</span>
-                            <span class="value" id="totalAmount">40,000 FCFA</span>
+                    </div>
+                    <div class="summary-item total">
+                        <i class="fas fa-receipt"></i>
+                        <div class="item-details">
+                            <span class="label">Total Amount</span>
+                            <span class="value" id="totalAmount">44,000 FCFA</span>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Payment Section -->
-                <div class="payment-section">
-                    <h2>Select Payment Method</h2>
-                    
-                    <div class="payment-methods">
-                        <div class="payment-method" data-method="mtn">
-                            <img src="../assets/images/mtn-momo.png" alt="MTN Mobile Money">
-                            <span>MTN Mobile Money</span>
-                        </div>
-                        <div class="payment-method" data-method="orange">
-                            <img src="../assets/images/orange-money.png" alt="Orange Money">
-                            <span>Orange Money</span>
-                        </div>
-                        <div class="payment-method" data-method="card">
-                            <img src="../assets/images/credit-card.png" alt="Credit Card">
-                            <span>Credit/Debit Card</span>
-                        </div>
+            <div class="payment-methods">
+                <h2>Select Payment Method</h2>
+                <div class="payment-options">
+                    <div class="payment-option" data-method="mtn">
+                        <img src="../assets/images/mtn-momo.png" alt="MTN Mobile Money">
+                        <span>MTN Mobile Money</span>
                     </div>
+                    <div class="payment-option" data-method="orange">
+                        <img src="../assets/images/orange-money.png" alt="Orange Money">
+                        <span>Orange Money</span>
+                    </div>
+                    <div class="payment-option" data-method="card">
+                        <img src="../assets/images/credit-card.png" alt="Credit/Debit Card">
+                        <span>Credit/Debit Card</span>
+                    </div>
+                </div>
 
-                    <!-- Payment Forms -->
-                    <div class="payment-forms">
-                        <!-- MTN Mobile Money Form -->
-                        <form id="mtnForm" class="payment-form">
-                            <div class="form-group">
-                                <label>MTN Mobile Money Number</label>
-                                <input type="tel" placeholder="6XX XXX XXX" required pattern="6[5-9][0-9]{7}">
-                            </div>
-                            <button type="submit" class="pay-button">
-                                Pay with MTN Mobile Money
-                            </button>
-                        </form>
+                <div class="payment-forms">
+                    <!-- MTN Mobile Money Form -->
+                    <form id="mtnForm" class="payment-form">
+                        <div class="form-group">
+                            <label for="mtnNumber">MTN Mobile Money Number</label>
+                            <input type="tel" id="mtnNumber" placeholder="Enter your MTN number" required>
+                        </div>
+                        <button type="submit" class="pay-button">
+                            <span>Pay with MTN Mobile Money</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
 
-                        <!-- Orange Money Form -->
-                        <form id="orangeForm" class="payment-form">
-                            <div class="form-group">
-                                <label>Orange Money Number</label>
-                                <input type="tel" placeholder="6XX XXX XXX" required pattern="6[5-9][0-9]{7}">
-                            </div>
-                            <button type="submit" class="pay-button">
-                                Pay with Orange Money
-                            </button>
-                        </form>
+                    <!-- Orange Money Form -->
+                    <form id="orangeForm" class="payment-form">
+                        <div class="form-group">
+                            <label for="orangeNumber">Orange Money Number</label>
+                            <input type="tel" id="orangeNumber" placeholder="Enter your Orange number" required>
+                        </div>
+                        <button type="submit" class="pay-button">
+                            <span>Pay with Orange Money</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
 
-                        <!-- Credit Card Form -->
-                        <form id="cardForm" class="payment-form">
-                            <div class="form-group">
-                                <label>Card Number</label>
-                                <input type="text" placeholder="XXXX XXXX XXXX XXXX" required>
+                    <!-- Credit Card Form -->
+                    <form id="cardForm" class="payment-form">
+                        <div class="form-group">
+                            <label for="cardName">Cardholder Name</label>
+                            <input type="text" id="cardName" placeholder="Name on card" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number</label>
+                            <div class="card-input">
+                                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                                <i class="card-icon fas fa-credit-card"></i>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>Expiry Date</label>
-                                    <input type="text" placeholder="MM/YY" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>CVV</label>
-                                    <input type="text" placeholder="XXX" required maxlength="3">
-                                </div>
-        </div>
+                        </div>
+                        <div class="form-row">
                             <div class="form-group">
-                                <label>Card Holder Name</label>
-                                <input type="text" placeholder="Name on card" required>
+                                <label for="expiry">Expiry Date</label>
+                                <input type="text" id="expiry" placeholder="MM/YY" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" placeholder="123" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="pay-button">
+                            <span>Pay with Card</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
-    </header>
-    <main>
-        <h1 data-en="Payment Page" data-fr="Page de Paiement">Payment Page</h1>
-        <div>
-            <h2 data-en="Selected Seats" data-fr="Sièges Sélectionnés">Selected Seats</h2>
-            <div id="selected-seats">Loading selected seats...</div>
-        </div>
-        </div>
-        <div>
-            <label for="payment-method" data-en="Select Payment Method:" data-fr="Sélectionnez le Mode de Paiement:">Select Payment Method:</label>
-            <select id="payment-method">
-                <option value="" data-en="Choose a method" data-fr="Choisissez une méthode">Choose a method</option>
-                <option value="mtn" data-en="MTN Mobile Money" data-fr="MTN Mobile Money">MTN Mobile Money</option>
-                <option value="orange" data-en="Orange Money" data-fr="Orange Money">Orange Money</option>
-            </select>
-        </div>
-        </div>
-        <button id="submit-payment" data-en="Submit Payment" data-fr="Soumettre le Paiement">Submit Payment</button>
-        <div id="notification" style="display:none;"></div>
-    </main>
+    </div>
+
+    <div class="payment-loader">
+        <div class="loader"></div>
+        <p>Processing your payment...</p>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const paymentMethods = document.querySelectorAll('.payment-method');
+            const paymentOptions = document.querySelectorAll('.payment-option');
             const paymentForms = document.querySelectorAll('.payment-form');
-            
-            // Hide all forms initially
-            paymentForms.forEach(form => form.style.display = 'none');
+            const loader = document.querySelector('.payment-loader');
 
-            // Payment method selection
-            paymentMethods.forEach(method => {
-                method.addEventListener('click', () => {
-                    // Remove active class from all methods
-                    paymentMethods.forEach(m => m.classList.remove('active'));
-                    // Add active class to selected method
-                    method.classList.add('active');
+            // Show the first payment method by default
+            paymentForms[0].classList.add('active');
+            paymentOptions[0].classList.add('selected');
 
-                    // Hide all forms
-                    paymentForms.forEach(form => form.style.display = 'none');
-                    
-                    // Show selected form
-                    const selectedMethod = method.dataset.method;
-                    document.getElementById(`${selectedMethod}Form`).style.display = 'block';
+            // Handle payment method selection
+            paymentOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const method = option.dataset.method;
+                    paymentOptions.forEach(opt => opt.classList.remove('selected'));
+                    option.classList.add('selected');
+
+                    paymentForms.forEach(form => {
+                        form.classList.remove('active');
+                        if (form.id === `${method}Form`) {
+                            form.classList.add('active');
+                        }
+                    });
                 });
             });
+
+            // Simulate payment processing
+            async function processPayment(formData, paymentMethod) {
+                // In a real application, this would be an API call to your payment processor
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        // Simulate successful payment 80% of the time
+                        if (Math.random() < 0.8) {
+                            resolve({
+                                success: true,
+                                transactionId: 'TXN' + Math.random().toString(36).substr(2, 9).toUpperCase(),
+                                message: 'Payment successful!'
+                            });
+                        } else {
+                            reject({
+                                success: false,
+                                error: 'Payment failed. Please try again.'
+                            });
+                        }
+                    }, 2000); // Simulate network delay
+                });
+            }
+
+            // Show notification
+            function showNotification(message, type = 'success') {
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.innerHTML = `
+                    <div class="notification-content">
+                        <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                        <p>${message}</p>
+                    </div>
+                `;
+                document.body.appendChild(notification);
+
+                // Remove notification after 5 seconds
+                setTimeout(() => {
+                    notification.remove();
+                }, 5000);
+            }
 
             // Handle form submissions
             paymentForms.forEach(form => {
                 form.addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    const formData = new FormData(form);
-                    const paymentMethod = form.id.replace('Form', '');
+                    
+                    // Basic form validation
+                    const inputs = form.querySelectorAll('input[required]');
+                    let isValid = true;
+                    
+                    inputs.forEach(input => {
+                        if (!input.value.trim()) {
+                            isValid = false;
+                            input.classList.add('error');
+                        } else {
+                            input.classList.remove('error');
+                        }
+                    });
+
+                    if (!isValid) {
+                        showNotification('Please fill in all required fields', 'error');
+                        return;
+                    }
+
+                    // Additional validation based on payment method
+                    const method = form.id.replace('Form', '');
+                    if (method === 'mtn' || method === 'orange') {
+                        const phoneNumber = form.querySelector('input[type="tel"]').value;
+                        if (!/^6[5-9][0-9]{7}$/.test(phoneNumber)) {
+                            showNotification('Please enter a valid mobile money number', 'error');
+                            return;
+                        }
+                    } else if (method === 'card') {
+                        const cardNumber = form.querySelector('#cardNumber').value.replace(/\s/g, '');
+                        const expiry = form.querySelector('#expiry').value;
+                        const cvv = form.querySelector('#cvv').value;
+
+                        if (!/^\d{16}$/.test(cardNumber)) {
+                            showNotification('Please enter a valid card number', 'error');
+                            return;
+                        }
+                        if (!/^\d{2}\/\d{2}$/.test(expiry)) {
+                            showNotification('Please enter a valid expiry date (MM/YY)', 'error');
+                            return;
+                        }
+                        if (!/^\d{3}$/.test(cvv)) {
+                            showNotification('Please enter a valid CVV', 'error');
+                            return;
+                        }
+                    }
 
                     // Show loading state
-                    const button = form.querySelector('button');
-                    const originalText = button.textContent;
-                    button.textContent = 'Processing...';
-                    button.disabled = true;
-
+                    loader.classList.add('active');
+                    const formData = new FormData(form);
+                    
                     try {
-                        // Simulate payment processing
-                        await new Promise(resolve => setTimeout(resolve, 2000));
+                        // Process payment
+                        const result = await processPayment(formData, method);
                         
-                        // Redirect to success page
-                        window.location.href = 'confirmation.html';
+                        // Save booking details to localStorage
+                        const bookingDetails = {
+                            transactionId: result.transactionId,
+                            busName: document.getElementById('busName').textContent,
+                            route: document.getElementById('route').textContent,
+                            travelDate: document.getElementById('travelDate').textContent,
+                            seats: document.getElementById('selectedSeats').textContent,
+                            amount: document.getElementById('totalAmount').textContent,
+                            paymentMethod: method,
+                            paymentDate: new Date().toLocaleString()
+                        };
+                        
+                        localStorage.setItem('lastBooking', JSON.stringify(bookingDetails));
+                        
+                        // Show success message
+                        showNotification(result.message, 'success');
+                        
+                        // Redirect to confirmation page after a brief delay
+                        setTimeout(() => {
+                            window.location.href = '../booking/confirmation.html';
+                        }, 1500);
                     } catch (error) {
-                        alert('Payment failed. Please try again.');
-                        button.textContent = originalText;
-                        button.disabled = false;
+                        showNotification(error.error, 'error');
+                    } finally {
+                        loader.classList.remove('active');
                     }
                 });
             });
 
+            // Format card number input
+            const cardNumber = document.getElementById('cardNumber');
+            if (cardNumber) {
+                cardNumber.addEventListener('input', (e) => {
+                    let value = e.target.value.replace(/\D/g, '');
+                    value = value.replace(/(.{4})/g, '$1 ').trim();
+                    e.target.value = value;
+                });
+            }
+
+            // Format expiry date input
+            const expiry = document.getElementById('expiry');
+            if (expiry) {
+                expiry.addEventListener('input', (e) => {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length >= 2) {
+                        value = value.slice(0, 2) + '/' + value.slice(2, 4);
+                    }
+                    e.target.value = value;
+                });
+            }
+
+            // Limit CVV to 3 digits
+            const cvv = document.getElementById('cvv');
+            if (cvv) {
+                cvv.addEventListener('input', (e) => {
+                    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 3);
+                });
+            }
+
             // Populate booking details from URL parameters
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('bus')) {
-                document.getElementById('busName').textContent = urlParams.get('bus');
+                document.getElementById('busName').textContent = decodeURIComponent(urlParams.get('bus'));
             }
             if (urlParams.has('seats')) {
-                document.getElementById('selectedSeats').textContent = urlParams.get('seats');
+                document.getElementById('selectedSeats').textContent = decodeURIComponent(urlParams.get('seats'));
             }
-            if (urlParams.has('total')) {
-                document.getElementById('totalAmount').textContent = 
-                    `${parseInt(urlParams.get('total')).toLocaleString()} FCFA`;
+            if (urlParams.has('amount')) {
+                document.getElementById('totalAmount').textContent = parseInt(urlParams.get('amount')).toLocaleString() + ' FCFA';
             }
             if (urlParams.has('date')) {
-                document.getElementById('travelDate').textContent = urlParams.get('date');
+                document.getElementById('travelDate').textContent = decodeURIComponent(urlParams.get('date'));
+            }
+            if (urlParams.has('route')) {
+                document.getElementById('route').textContent = decodeURIComponent(urlParams.get('route'));
             }
         });
     </script>

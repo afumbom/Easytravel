@@ -558,7 +558,7 @@
                             <span class="label">Starting from</span>
                             <span class="price-amount">${Math.min(bus.seatTypes.window, bus.seatTypes.aisle, bus.seatTypes.front).toLocaleString()} FCFA</span>
                         </div>
-                        <a href="booking/seat-selection.html?bus=${encodeURIComponent(bus.name)}" class="select-seats">
+                        <a href="booking/seat-selection.html?bus=${encodeURIComponent(bus.name)}&type=${encodeURIComponent(bus.type)}&route=${encodeURIComponent(fromCity.value + ' → ' + toCity.value)}&date=${encodeURIComponent(travelDate.value)}&window=${bus.seatTypes.window}&aisle=${bus.seatTypes.aisle}&front=${bus.seatTypes.front}" class="select-seats">
                             <span>Select Seats</span>
                             <i class="fas fa-arrow-right"></i>
                         </a>
