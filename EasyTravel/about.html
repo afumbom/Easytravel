@@ -5,210 +5,270 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - EasyTravel</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .about-container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
         .about-header {
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
+            color: var(--white);
             text-align: center;
-            margin-bottom: 60px;
+            padding: 8rem 1rem 6rem;
+            margin-top: 0;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         }
 
         .about-header h1 {
-            font-size: 36px;
-            color: var(--primary-color);
-            margin-bottom: 16px;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            letter-spacing: -1px;
         }
 
         .about-header p {
-            color: var(--secondary-color);
-            font-size: 18px;
+            font-size: 1.25rem;
             max-width: 600px;
             margin: 0 auto;
+            opacity: 0.9;
         }
 
-        .story-section {
+        .about-container {
+            max-width: 1200px;
+            margin: -4rem auto 4rem;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-section {
+            background: var(--white);
+            border-radius: 1rem;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+        }
+
+        .about-section h2 {
+            color: var(--blue-dark);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 60px;
-            align-items: center;
-        }
-
-        .story-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 12px;
-        }
-
-        .story-content h2 {
-            font-size: 28px;
-            color: var(--primary-color);
-            margin-bottom: 24px;
-        }
-
-        .story-content p {
-            color: var(--secondary-color);
-            line-height: 1.6;
-            margin-bottom: 16px;
-        }
-
-        .values-section {
-            margin-bottom: 60px;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
         .value-card {
-            background: white;
-            padding: 32px;
-            border-radius: 12px;
+            background: var(--gray-50);
+            padding: 2rem;
+            border-radius: 1rem;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
         }
 
         .value-icon {
-            width: 60px;
-            height: 60px;
-            background: #f1f5f9;
+            width: 4rem;
+            height: 4rem;
+            background: var(--blue);
+            color: var(--white);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 24px;
-        }
-
-        .value-icon i {
-            font-size: 24px;
-            color: var(--primary-color);
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
         }
 
         .value-card h3 {
-            font-size: 20px;
-            color: var(--primary-color);
-            margin-bottom: 16px;
+            color: var(--blue-dark);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
         }
 
         .value-card p {
-            color: var(--secondary-color);
+            color: var(--blue);
             line-height: 1.6;
-        }
-
-        .team-section {
-            margin-bottom: 60px;
         }
 
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            gap: 2rem;
         }
 
         .team-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-0.5rem);
         }
 
         .team-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border: 4px solid var(--blue);
+        }
+
+        .team-image img {
             width: 100%;
-            height: 300px;
+            height: 100%;
             object-fit: cover;
         }
 
-        .team-content {
-            padding: 24px;
-            text-align: center;
+        .team-info h3 {
+            color: var(--blue-dark);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
 
-        .team-content h3 {
-            font-size: 20px;
-            color: var(--primary-color);
-            margin-bottom: 8px;
-        }
-
-        .team-content .position {
-            color: var(--secondary-color);
-            margin-bottom: 16px;
+        .team-info p {
+            color: var(--blue);
+            margin-bottom: 1rem;
         }
 
         .team-social {
             display: flex;
             justify-content: center;
-            gap: 16px;
+            gap: 1rem;
         }
 
         .team-social a {
-            color: var(--primary-color);
-            transition: color 0.3s ease;
+            color: var(--blue);
+            transition: all 0.3s ease;
         }
 
         .team-social a:hover {
-            color: #1e293b;
+            color: var(--blue-dark);
+            transform: translateY(-0.25rem);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            padding: 2rem;
+            background: var(--gray-50);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--blue-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--blue);
+            font-weight: 500;
         }
 
         @media (max-width: 768px) {
-            .story-section {
-                grid-template-columns: 1fr;
+            .about-header {
+                padding: 6rem 1rem 4rem;
             }
 
-            .story-image {
-                height: 300px;
+            .about-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-container {
+                margin-top: -2rem;
+            }
+
+            .about-section {
+                padding: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <a href="index.html">EasyTravel</a>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/" class="logo">
+                <img src="assets/images/logo.png" alt="EasyTravel Logo">
+                <span>EasyTravel</span>
+            </a>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="routes.html">Routes</a></li>
                 <li><a href="about.html" class="active">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="booking/login.html" class="btn btn-primary">Login</a></li>
             </ul>
-            <div class="auth-buttons">
-                <a href="#" class="btn btn-outline">Sign In</a>
-                <a href="#" class="btn btn-primary">Sign Up</a>
-            </div>
         </nav>
     </header>
 
     <main>
-        <div class="about-container">
-            <div class="about-header">
-                <h1>About EasyTravel</h1>
-                <p>Your trusted partner in comfortable and reliable bus travel across Cameroon.</p>
-            </div>
+        <div class="about-header">
+            <h1>About EasyTravel</h1>
+            <p>Your trusted travel partner in Cameroon since 2020</p>
+        </div>
 
-            <section class="story-section">
-                <img src="assets/images/about-story.jpg" alt="EasyTravel Story" class="story-image">
-                <div class="story-content">
-                    <h2>Our Story</h2>
-                    <p>Founded in 2020, EasyTravel was born from a simple idea: to make bus travel in Cameroon more accessible, comfortable, and enjoyable for everyone.</p>
-                    <p>What started as a small operation with just two buses has grown into one of Cameroon's most trusted transportation networks, serving thousands of passengers daily across multiple cities.</p>
-                    <p>Our commitment to safety, comfort, and customer satisfaction has earned us the trust of our passengers and established us as a leader in the transportation industry.</p>
+        <div class="about-container">
+            <section class="about-section">
+                <h2>Our Story</h2>
+                <p>EasyTravel was founded with a simple mission: to make bus travel in Cameroon comfortable, reliable, and truly easy. What started as a small operation has grown into one of the country's most trusted transportation services.</p>
+                <p>We understand that every journey matters, whether it's a business trip, family visit, or adventure exploration. That's why we've built our service around the needs of our passengers, focusing on safety, comfort, and convenience.</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Happy Travelers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Cities Covered</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Luxury Buses</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Satisfaction Rate</div>
+                    </div>
                 </div>
             </section>
 
-            <section class="values-section">
-                <div class="section-title">
-                    <h2>Our Values</h2>
-                </div>
-                <div class="values-grid">
+            <section class="about-section">
+                <h2>Our Values</h2>
+                <div class="about-grid">
                     <div class="value-card">
                         <div class="value-icon">
                             <i class="fas fa-shield-alt"></i>
@@ -218,31 +278,31 @@
                     </div>
                     <div class="value-card">
                         <div class="value-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <h3>Customer Focus</h3>
-                        <p>We put our customers at the heart of everything we do, ensuring a pleasant travel experience from booking to arrival.</p>
-                    </div>
-                    <div class="value-card">
-                        <div class="value-icon">
                             <i class="fas fa-clock"></i>
                         </div>
                         <h3>Reliability</h3>
-                        <p>We understand the importance of punctuality and strive to maintain consistent and reliable service.</p>
+                        <p>We understand the importance of punctuality. Our schedules are designed to get you to your destination on time.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Customer Care</h3>
+                        <p>We're committed to providing exceptional service and ensuring your journey is comfortable and enjoyable.</p>
                     </div>
                 </div>
             </section>
 
-            <section class="team-section">
-                <div class="section-title">
-                    <h2>Our Team</h2>
-                </div>
+            <section class="about-section">
+                <h2>Our Team</h2>
                 <div class="team-grid">
                     <div class="team-card">
-                        <img src="assets/images/team1.jpg" alt="John Doe" class="team-image">
-                        <div class="team-content">
+                        <div class="team-image">
+                            <img src="assets/images/team/ceo.jpg" alt="CEO">
+                        </div>
+                        <div class="team-info">
                             <h3>John Doe</h3>
-                            <div class="position">CEO & Founder</div>
+                            <p>CEO & Founder</p>
                             <div class="team-social">
                                 <a href="#"><i class="fab fa-linkedin"></i></a>
                                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -250,10 +310,12 @@
                         </div>
                     </div>
                     <div class="team-card">
-                        <img src="assets/images/team2.jpg" alt="Jane Smith" class="team-image">
-                        <div class="team-content">
+                        <div class="team-image">
+                            <img src="assets/images/team/operations.jpg" alt="Operations Manager">
+                        </div>
+                        <div class="team-info">
                             <h3>Jane Smith</h3>
-                            <div class="position">Operations Manager</div>
+                            <p>Operations Manager</p>
                             <div class="team-social">
                                 <a href="#"><i class="fab fa-linkedin"></i></a>
                                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -261,10 +323,12 @@
                         </div>
                     </div>
                     <div class="team-card">
-                        <img src="assets/images/team3.jpg" alt="Mike Johnson" class="team-image">
-                        <div class="team-content">
+                        <div class="team-image">
+                            <img src="assets/images/team/customer-service.jpg" alt="Customer Service Lead">
+                        </div>
+                        <div class="team-info">
                             <h3>Mike Johnson</h3>
-                            <div class="position">Customer Service Head</div>
+                            <p>Customer Service Lead</p>
                             <div class="team-social">
                                 <a href="#"><i class="fab fa-linkedin"></i></a>
                                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -276,37 +340,21 @@
         </div>
     </main>
 
-    <footer>
+    <footer class="footer">
         <div class="footer-content">
-            <div class="footer-section">
-                <h3>EasyTravel</h3>
-                <p>Making travel easier across Cameroon</p>
+            <div class="footer-logo">
+                <img src="assets/images/logo.png" alt="EasyTravel Logo">
+                <span>EasyTravel</span>
             </div>
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="routes.html">Routes</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
+            <ul class="footer-links">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Terms</a></li>
+                <li><a href="#">Privacy</a></li>
+            </ul>
+            <div class="footer-copyright">
+                2024 EasyTravel. All rights reserved.
             </div>
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: info@easytravel.com</p>
-                <p>Phone: +237 123 456 789</p>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 EasyTravel. All rights reserved.</p>
         </div>
     </footer>
 </body>
