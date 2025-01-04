@@ -6,126 +6,412 @@
     <title>Payment - EasyTravel</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #64748b;
+            --success-color: #16a34a;
+            --error-color: #dc2626;
+            --background-color: #f8fafc;
+            --border-color: #e2e8f0;
+        }
+
+        .payment-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .booking-details {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 16px;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .detail-item .label {
+            font-size: 14px;
+            color: var(--secondary-color);
+        }
+
+        .detail-item .value {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .passenger-info {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .passenger-form {
+            margin-top: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            color: var(--secondary-color);
+        }
+
+        .form-group input {
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.1);
+        }
+
+        .form-group input:invalid {
+            border-color: var(--error-color);
+        }
+
+        .form-group input.error {
+            border-color: var(--error-color);
+            background-color: #fef2f2;
+        }
+
+        .payment-section {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .page-header h1 {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .page-header .subtitle {
+            color: var(--secondary-color);
+            font-size: 16px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-header i {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .detail-icon {
+            width: 40px;
+            height: 40px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .detail-icon i {
+            font-size: 20px;
+            color: var(--primary-color);
+        }
+
+        .detail-content {
+            flex: 1;
+        }
+
+        .detail-content .label {
+            display: block;
+            font-size: 14px;
+            color: var(--secondary-color);
+            margin-bottom: 4px;
+        }
+
+        .detail-content .value {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .total-amount {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .total-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .total-label i {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .total-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .total-amount {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="payment-container">
         <div class="payment-header">
-            <h1>Complete Your Booking</h1>
-            <p>Please review your booking details and select a payment method</p>
+            <div class="page-header">
+                <h1>Complete Your Booking</h1>
+                <p class="subtitle">Please review your booking details and select a payment method</p>
+            </div>
         </div>
 
         <div class="payment-content">
-            <div class="booking-summary">
-                <h2>Booking Summary</h2>
-                <div class="summary-details">
-                    <div class="summary-item">
-                        <i class="fas fa-bus"></i>
-                        <div class="item-details">
+            <div class="booking-details">
+                <div class="section-header">
+                    <i class="fas fa-ticket-alt"></i>
+                    <h2>Booking Summary</h2>
+                </div>
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-bus"></i>
+                        </div>
+                        <div class="detail-content">
                             <span class="label">Bus Service</span>
-                            <span class="value" id="busName">General Express VIP</span>
+                            <span class="value" id="busName">-</span>
                         </div>
                     </div>
-                    <div class="summary-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div class="item-details">
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <div class="detail-content">
                             <span class="label">Route</span>
-                            <span class="value" id="route">Bamenda → Douala</span>
+                            <span class="value" id="route">-</span>
                         </div>
                     </div>
-                    <div class="summary-item">
-                        <i class="fas fa-calendar"></i>
-                        <div class="item-details">
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <div class="detail-content">
                             <span class="label">Travel Date</span>
-                            <span class="value" id="travelDate">January 4, 2025</span>
+                            <span class="value" id="travelDate">-</span>
                         </div>
                     </div>
-                    <div class="summary-item">
-                        <i class="fas fa-chair"></i>
-                        <div class="item-details">
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-chair"></i>
+                        </div>
+                        <div class="detail-content">
                             <span class="label">Selected Seats</span>
-                            <span class="value" id="selectedSeats">A1, A2 (Window)</span>
+                            <span class="value" id="seats">-</span>
                         </div>
                     </div>
-                    <div class="summary-item total">
+                </div>
+                <div class="total-amount">
+                    <div class="total-label">
                         <i class="fas fa-receipt"></i>
-                        <div class="item-details">
-                            <span class="label">Total Amount</span>
-                            <span class="value" id="totalAmount">44,000 FCFA</span>
-                        </div>
+                        <span>Total Amount</span>
                     </div>
+                    <div class="total-value" id="amount">-</div>
                 </div>
             </div>
 
-            <div class="payment-methods">
-                <h2>Select Payment Method</h2>
-                <div class="payment-options">
-                    <div class="payment-option" data-method="mtn">
-                        <img src="/assets/images/mtnmoney.jpeg" alt="MTN Mobile Money">
-                        <span>MTN Mobile Money</span>
+            <div class="passenger-info">
+                <h2>Passenger Information</h2>
+                <form id="passengerForm" class="passenger-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
                     </div>
-                    <div class="payment-option" data-method="orange">
-                        <img src="../assets/images/orangemoney.jpeg" alt="Orange Money">
-                        <span>Orange Money</span>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" pattern="[6][0-9]{8}" title="Please enter a valid Cameroon phone number starting with 6" required>
+                        </div>
                     </div>
-                    <div class="payment-option" data-method="card">
-                        <img src="../assets/images/creditcard.jpeg" alt="Credit/Debit Card">
-                        <span>Credit/Debit Card</span>
+                    <div class="form-group">
+                        <label for="idNumber">ID Card Number</label>
+                        <input type="text" id="idNumber" name="idNumber" required>
                     </div>
-                </div>
+                </form>
+            </div>
 
-                <div class="payment-forms">
-                    <!-- MTN Mobile Money Form -->
-                    <form id="mtnForm" class="payment-form">
-                        <div class="form-group">
-                            <label for="mtnNumber">MTN Mobile Money Number</label>
-                            <input type="tel" id="mtnNumber" placeholder="Enter your MTN number" required>
+            <div class="payment-section">
+                <div class="payment-methods">
+                    <h2>Select Payment Method</h2>
+                    <div class="payment-options">
+                        <div class="payment-option" data-method="mtn">
+                            <img src="/assets/images/mtnmoney.jpeg" alt="MTN Mobile Money">
+                            <span>MTN Mobile Money</span>
                         </div>
-                        <button type="submit" class="pay-button">
-                            <span>Pay with MTN Mobile Money</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </form>
+                        <div class="payment-option" data-method="orange">
+                            <img src="../assets/images/orangemoney.jpeg" alt="Orange Money">
+                            <span>Orange Money</span>
+                        </div>
+                        <div class="payment-option" data-method="card">
+                            <img src="../assets/images/creditcard.jpeg" alt="Credit/Debit Card">
+                            <span>Credit/Debit Card</span>
+                        </div>
+                    </div>
 
-                    <!-- Orange Money Form -->
-                    <form id="orangeForm" class="payment-form">
-                        <div class="form-group">
-                            <label for="orangeNumber">Orange Money Number</label>
-                            <input type="tel" id="orangeNumber" placeholder="Enter your Orange number" required>
-                        </div>
-                        <button type="submit" class="pay-button">
-                            <span>Pay with Orange Money</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </form>
-
-                    <!-- Credit Card Form -->
-                    <form id="cardForm" class="payment-form">
-                        <div class="form-group">
-                            <label for="cardName">Cardholder Name</label>
-                            <input type="text" id="cardName" placeholder="Name on card" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="cardNumber">Card Number</label>
-                            <div class="card-input">
-                                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
-                                <i class="card-icon fas fa-credit-card"></i>
-                            </div>
-                        </div>
-                        <div class="form-row">
+                    <div class="payment-forms">
+                        <!-- MTN Mobile Money Form -->
+                        <form id="mtnForm" class="payment-form">
                             <div class="form-group">
-                                <label for="expiry">Expiry Date</label>
-                                <input type="text" id="expiry" placeholder="MM/YY" required>
+                                <label for="mtnNumber">MTN Mobile Money Number</label>
+                                <input type="tel" id="mtnNumber" placeholder="Enter your MTN number" required>
+                            </div>
+                            <button type="submit" class="pay-button">
+                                <span>Pay with MTN Mobile Money</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </form>
+
+                        <!-- Orange Money Form -->
+                        <form id="orangeForm" class="payment-form">
+                            <div class="form-group">
+                                <label for="orangeNumber">Orange Money Number</label>
+                                <input type="tel" id="orangeNumber" placeholder="Enter your Orange number" required>
+                            </div>
+                            <button type="submit" class="pay-button">
+                                <span>Pay with Orange Money</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </form>
+
+                        <!-- Credit Card Form -->
+                        <form id="cardForm" class="payment-form">
+                            <div class="form-group">
+                                <label for="cardName">Cardholder Name</label>
+                                <input type="text" id="cardName" placeholder="Name on card" required>
                             </div>
                             <div class="form-group">
-                                <label for="cvv">CVV</label>
-                                <input type="text" id="cvv" placeholder="123" required>
+                                <label for="cardNumber">Card Number</label>
+                                <div class="card-input">
+                                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                                    <i class="card-icon fas fa-credit-card"></i>
+                                </div>
                             </div>
-                        </div>
-                        <button type="submit" class="pay-button">
-                            <span>Pay with Card</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </form>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="expiry">Expiry Date</label>
+                                    <input type="text" id="expiry" placeholder="MM/YY" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" placeholder="123" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="pay-button">
+                                <span>Pay with Card</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -141,6 +427,7 @@
             const paymentOptions = document.querySelectorAll('.payment-option');
             const paymentForms = document.querySelectorAll('.payment-form');
             const loader = document.querySelector('.payment-loader');
+            const passengerForm = document.getElementById('passengerForm');
 
             // Show the first payment method by default
             paymentForms[0].classList.add('active');
@@ -161,6 +448,42 @@
                     });
                 });
             });
+
+            // Only show payment methods after passenger info is filled
+            function validatePassengerInfo() {
+                const isValid = passengerForm.checkValidity();
+                document.querySelector('.payment-options').style.opacity = isValid ? '1' : '0.5';
+                paymentOptions.forEach(option => {
+                    option.style.pointerEvents = isValid ? 'auto' : 'none';
+                });
+                return isValid;
+            }
+
+            // Validate on input
+            passengerForm.addEventListener('input', validatePassengerInfo);
+
+            // Validate before showing payment form
+            paymentOptions.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    if (!validatePassengerInfo()) {
+                        e.preventDefault();
+                        alert('Please fill in all passenger information first');
+                        return;
+                    }
+                });
+            });
+
+            // Store passenger info when proceeding to payment
+            function storePassengerInfo() {
+                const passengerInfo = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    idNumber: document.getElementById('idNumber').value
+                };
+                localStorage.setItem('passengerInfo', JSON.stringify(passengerInfo));
+            }
 
             // Simulate payment processing
             async function processPayment(formData, paymentMethod) {
@@ -252,6 +575,14 @@
                         }
                     }
 
+                    if (!validatePassengerInfo()) {
+                        showNotification('Please fill in all passenger information first', 'error');
+                        return;
+                    }
+
+                    // Store passenger info
+                    storePassengerInfo();
+
                     // Show loading state
                     loader.classList.add('active');
                     const formData = new FormData(form);
@@ -266,8 +597,8 @@
                             busName: document.getElementById('busName').textContent,
                             route: document.getElementById('route').textContent,
                             travelDate: document.getElementById('travelDate').textContent,
-                            seats: document.getElementById('selectedSeats').textContent,
-                            amount: document.getElementById('totalAmount').textContent,
+                            seats: document.getElementById('seats').textContent,
+                            amount: document.getElementById('amount').textContent,
                             paymentMethod: method,
                             paymentDate: new Date().toLocaleString()
                         };
@@ -325,10 +656,10 @@
                 document.getElementById('busName').textContent = decodeURIComponent(urlParams.get('bus'));
             }
             if (urlParams.has('seats')) {
-                document.getElementById('selectedSeats').textContent = decodeURIComponent(urlParams.get('seats'));
+                document.getElementById('seats').textContent = decodeURIComponent(urlParams.get('seats'));
             }
             if (urlParams.has('amount')) {
-                document.getElementById('totalAmount').textContent = parseInt(urlParams.get('amount')).toLocaleString() + ' FCFA';
+                document.getElementById('amount').textContent = parseInt(urlParams.get('amount')).toLocaleString() + ' FCFA';
             }
             if (urlParams.has('date')) {
                 document.getElementById('travelDate').textContent = decodeURIComponent(urlParams.get('date'));
