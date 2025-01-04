@@ -606,6 +606,25 @@
             button.classList.add('active');
             document.getElementById(tabId).classList.add('active');
         }
+
+        // Check if URL has #schedules hash and show schedule tabs
+        window.addEventListener('load', () => {
+            if (window.location.hash === '#schedules') {
+                // Show schedule tab for all route cards
+                document.querySelectorAll('.route-card').forEach(card => {
+                    const scheduleTab = card.querySelector('.route-tab:not(.active)');
+                    if (scheduleTab) {
+                        scheduleTab.click();
+                    }
+                });
+                
+                // Smooth scroll to the routes section
+                document.querySelector('.routes-container').scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
     </script>
 </body>
 </html>
