@@ -13,6 +13,7 @@ A modern bus ticketing application built with Node.js and Express, featuring an 
 - 📧 Instant booking confirmation with ticket details
 - 🗺️ Real-time route availability and pricing
 - 👥 User profiles for managing bookings and preferences
+![image](https://github.com/user-attachments/assets/71cd09bc-bf5f-4cd6-9190-5545d8d0603d)
 
 ### System Features
 - 🔐 Secure user authentication and authorization
@@ -25,7 +26,7 @@ A modern bus ticketing application built with Node.js and Express, featuring an 
 ## 📸 Screenshots
 
 ### Homepage & Route Search
-![image](https://github.com/user-attachments/assets/7a650a2a-f99d-4a0d-8349-0e726023030c)
+![image](https://github.com/user-attachments/assets/71d65a72-550c-40d1-a3fc-1455f12fc464)
 
 
 *Modern and intuitive homepage with easy route search*
