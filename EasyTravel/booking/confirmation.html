@@ -4,224 +4,340 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking Confirmation - EasyTravel</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --primary-color: #0f172a;
-            --secondary-color: #64748b;
-            --success-color: #16a34a;
-            --background-color: #f8fafc;
-            --border-color: #e2e8f0;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--background-color);
-            color: var(--primary-color);
-            line-height: 1.5;
-        }
-
-        .confirmation-container {
+        .confirmation-page {
             max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
+            margin: 2rem auto;
+            padding: 0 1rem;
         }
 
-        .confirmation-card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            padding: 40px;
+        .success-animation {
             text-align: center;
+            margin: 2rem 0;
         }
 
         .success-icon {
             width: 80px;
             height: 80px;
-            background: #f0fdf4;
+            background: #4CAF50;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 24px;
+            margin: 0 auto;
+            animation: scaleIn 0.5s ease-out;
         }
 
         .success-icon i {
+            color: white;
             font-size: 40px;
-            color: var(--success-color);
         }
 
-        h1 {
-            color: var(--success-color);
-            margin-bottom: 16px;
-            font-size: 28px;
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
-        .confirmation-message {
-            color: var(--secondary-color);
-            margin-bottom: 32px;
-            font-size: 18px;
+        .confirmation-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 2rem;
         }
 
-        .booking-details {
-            background: var(--background-color);
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 32px;
-            text-align: left;
+        .confirmation-header {
+            background: #1a365d;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
         }
 
-        .detail-group {
+        .confirmation-header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .confirmation-content {
+            padding: 2rem;
+        }
+
+        .info-section {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1.5rem;
+        }
+
+        .info-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .info-section h2 {
+            color: #1a365d;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-section h2 i {
+            color: #4a5568;
+        }
+
+        .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 24px;
-            margin-bottom: 24px;
+            gap: 1.5rem;
         }
 
-        .detail-item {
+        .info-item {
             display: flex;
             flex-direction: column;
+            gap: 0.5rem;
         }
 
-        .detail-label {
-            color: var(--secondary-color);
-            font-size: 14px;
-            margin-bottom: 4px;
+        .info-label {
+            font-size: 0.875rem;
+            color: #4a5568;
         }
 
-        .detail-value {
+        .info-value {
             font-weight: 500;
-            color: var(--primary-color);
+            color: #2d3748;
         }
 
-        .transaction-id {
-            font-family: monospace;
-            background: #f1f5f9;
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-size: 14px;
-            color: var(--secondary-color);
-            display: inline-block;
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
         }
 
-        .actions {
-            margin-top: 32px;
-        }
-
-        .button {
-            display: inline-flex;
-            align-items: center;
-            padding: 12px 24px;
-            background: var(--primary-color);
-            color: white;
-            text-decoration: none;
+        .btn {
+            padding: 0.75rem 1.5rem;
             border-radius: 8px;
             font-weight: 500;
-            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            flex: 1;
+            justify-content: center;
+            min-width: 150px;
         }
 
-        .button:hover {
-            background: #1e293b;
+        .btn-primary {
+            background: #1a365d;
+            color: white;
         }
 
-        .button i {
-            margin-right: 8px;
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #2d3748;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         @media print {
-            body {
-                background: white;
+            .action-buttons {
+                display: none;
             }
+
             .confirmation-card {
                 box-shadow: none;
             }
-            .actions {
+
+            .success-animation {
                 display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="confirmation-container">
-        <div class="confirmation-card">
+    <main class="confirmation-page">
+        <div class="success-animation">
             <div class="success-icon">
                 <i class="fas fa-check"></i>
             </div>
-            <h1>Booking Confirmed!</h1>
-            <p class="confirmation-message">Your payment was successful and your booking has been confirmed.</p>
-            
-            <div class="booking-details">
-                <div class="detail-group">
-                    <div class="detail-item">
-                        <span class="detail-label">Bus Service</span>
-                        <span class="detail-value" id="busName">-</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Route</span>
-                        <span class="detail-value" id="route">-</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Travel Date</span>
-                        <span class="detail-value" id="travelDate">-</span>
-                    </div>
-                </div>
-                
-                <div class="detail-group">
-                    <div class="detail-item">
-                        <span class="detail-label">Selected Seats</span>
-                        <span class="detail-value" id="seats">-</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Amount Paid</span>
-                        <span class="detail-value" id="amount">-</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Payment Method</span>
-                        <span class="detail-value" id="paymentMethod">-</span>
-                    </div>
-                </div>
+            <h2>Booking Confirmed!</h2>
+            <p>Your ticket has been booked successfully</p>
+        </div>
 
-                <div class="detail-item">
-                    <span class="detail-label">Transaction ID</span>
-                    <span class="transaction-id" id="transactionId">-</span>
-                </div>
+        <div class="confirmation-card">
+            <div class="confirmation-header">
+                <h1>Booking Confirmation</h1>
             </div>
 
-            <div class="actions">
-                <a href="#" onclick="window.print(); return false;" class="button">
-                    <i class="fas fa-print"></i>
-                    Print Ticket
-                </a>
-                <a href="../index.html" class="button">
-                    <i class="fas fa-home"></i>
-                    Back to Home
-                </a>
+            <div class="confirmation-content">
+                <!-- Booking Details -->
+                <div class="info-section">
+                    <h2><i class="fas fa-ticket-alt"></i> Booking Details</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Booking Reference</span>
+                            <span class="info-value" id="bookingRef">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Travel Date</span>
+                            <span class="info-value" id="travelDate">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Departure</span>
+                            <span class="info-value" id="departure">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Destination</span>
+                            <span class="info-value" id="destination">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bus Information -->
+                <div class="info-section">
+                    <h2><i class="fas fa-bus"></i> Bus Information</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Bus Number</span>
+                            <span class="info-value" id="busNumber">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Driver Name</span>
+                            <span class="info-value" id="driverName">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Bus Type</span>
+                            <span class="info-value" id="busType">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Total Seats</span>
+                            <span class="info-value" id="totalSeats">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passenger Information -->
+                <div class="info-section">
+                    <h2><i class="fas fa-user"></i> Passenger Information</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Full Name</span>
+                            <span class="info-value" id="passengerName">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Phone Number</span>
+                            <span class="info-value" id="phoneNumber">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Seat Number</span>
+                            <span class="info-value" id="seatNumber">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Ticket Type</span>
+                            <span class="info-value" id="ticketType">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Information -->
+                <div class="info-section">
+                    <h2><i class="fas fa-credit-card"></i> Payment Information</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Payment Method</span>
+                            <span class="info-value" id="paymentMethod">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Transaction ID</span>
+                            <span class="info-value" id="transactionId">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Amount Paid</span>
+                            <span class="info-value" id="amountPaid">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Payment Date</span>
+                            <span class="info-value" id="paymentDate">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="window.print()">
+                        <i class="fas fa-print"></i>
+                        Print Ticket
+                    </button>
+                    <a href="../index.html" class="btn btn-secondary">
+                        <i class="fas fa-home"></i>
+                        Back to Home
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Get booking details from localStorage
-            const booking = JSON.parse(localStorage.getItem('lastBooking'));
-            if (booking) {
-                document.getElementById('busName').textContent = booking.busName;
-                document.getElementById('route').textContent = booking.route;
-                document.getElementById('travelDate').textContent = booking.travelDate;
-                document.getElementById('seats').textContent = booking.seats;
-                document.getElementById('amount').textContent = booking.amount;
-                document.getElementById('paymentMethod').textContent = 
-                    booking.paymentMethod === 'mtn' ? 'MTN Mobile Money' :
-                    booking.paymentMethod === 'orange' ? 'Orange Money' :
-                    'Credit/Debit Card';
-                document.getElementById('transactionId').textContent = booking.transactionId;
-            }
+            const bookingDetails = JSON.parse(localStorage.getItem('lastBooking') || '{}');
+            const passengerInfo = JSON.parse(localStorage.getItem('passengerInfo') || '{}');
+            
+            // Populate booking details
+            document.getElementById('bookingRef').textContent = bookingDetails.transactionId || '-';
+            document.getElementById('travelDate').textContent = bookingDetails.travelDate || '-';
+            
+            // Split route into departure and destination
+            const route = bookingDetails.route || '';
+            const [departure, destination] = route.split(' → ');
+            document.getElementById('departure').textContent = departure || '-';
+            document.getElementById('destination').textContent = destination || '-';
+            
+            // Bus information
+            document.getElementById('busNumber').textContent = bookingDetails.busNumber || 'BUS-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+            document.getElementById('driverName').textContent = bookingDetails.driverName || 'John Doe';
+            document.getElementById('busType').textContent = bookingDetails.busType || 'VIP';
+            document.getElementById('totalSeats').textContent = bookingDetails.totalSeats || '45';
+            
+            // Passenger information
+            document.getElementById('passengerName').textContent = `${passengerInfo.firstName || '-'} ${passengerInfo.lastName || ''}`;
+            document.getElementById('phoneNumber').textContent = passengerInfo.phone || '-';
+            document.getElementById('seatNumber').textContent = bookingDetails.seats || '-';
+            document.getElementById('ticketType').textContent = 'Standard';
+            
+            // Payment information
+            document.getElementById('paymentMethod').textContent = bookingDetails.paymentMethod || '-';
+            document.getElementById('transactionId').textContent = bookingDetails.transactionId || '-';
+            document.getElementById('amountPaid').textContent = bookingDetails.amount || '-';
+            document.getElementById('paymentDate').textContent = bookingDetails.paymentDate || new Date().toLocaleString();
         });
     </script>
 </body>
