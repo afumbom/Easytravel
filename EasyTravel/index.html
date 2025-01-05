@@ -234,6 +234,29 @@
         .select-seats span {
             margin-right: 10px;
         }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-left: 2rem;
+        }
+
+        .auth-btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn, .register-btn {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .login-btn:hover, .register-btn:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body>
@@ -253,7 +276,7 @@
                 <li><a href="routes.html">Routes</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="booking/login.html" class="btn btn-primary">Login</a></li>
+                <li><a href="login.html" class="btn btn-primary" style="border-radius: 5rem;  background-color: #1a365d; color: #f7f7f7;">Login</a></li>
             </ul>
         </nav>
     </header>
