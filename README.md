@@ -1,7 +1,8 @@
 # EasyTravel
 
 A modern bus ticketing application built with Node.js and Express, featuring an interactive seat booking system and secure payment processing.
-![image](https://github.com/user-attachments/assets/10665a21-730f-465d-b25a-311abf03d169)
+![image](https://github.com/user-attachments/assets/10665a21-730f-465d-b25a-311abf03d169) ![image](https://github.com/user-attachments/assets/356f11b4-44f5-4425-a477-3eb822df67ed)
+
 
 ## 🌟 Features
 
@@ -12,7 +13,6 @@ A modern bus ticketing application built with Node.js and Express, featuring an 
 - 📧 Instant booking confirmation with ticket details
 - 🗺️ Real-time route availability and pricing
 - 👥 User profiles for managing bookings and preferences
-![image](https://github.com/user-attachments/assets/3397d81a-3a18-4341-96b4-80a1f191ef63)
 
 ### System Features
 - 🔐 Secure user authentication and authorization
