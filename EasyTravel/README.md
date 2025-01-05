@@ -1,72 +1,118 @@
-# EasyTravel - Bus Ticketing Application
+# EasyTravel
 
 A modern bus ticketing application built with Node.js and Express, featuring an interactive seat booking system and secure payment processing.
 
-## Project Structure
+## 🌟 Features
 
-```
-EasyTravel/
-├── assets/              # Static assets
-│   ├── css/            # Stylesheets
-│   │   ├── components/ # Reusable component styles
-│   │   ├── pages/      # Page-specific styles
-│   │   └── main.css    # Global styles
-│   ├── js/             # JavaScript files
-│   │   ├── components/ # Reusable component scripts
-│   │   ├── pages/      # Page-specific scripts
-│   │   └── main.js     # Global scripts
-│   └── images/         # Images and icons
-├── src/                # Source code
-│   ├── pages/          # Page templates
-│   └── components/     # Reusable components
-├── config/             # Configuration files
-├── models/             # Database models
-├── public/             # Public assets
-└── server.js          # Main server file
-```
+### For Travelers
+- 🎫 Easy bus ticket booking with interactive seat selection
+- 💳 Secure payment processing with multiple payment options (MTN Mobile Money, Orange Money, Credit Card)
+- 📱 Mobile-responsive design for booking on any device
+- 📧 Instant booking confirmation with ticket details
+- 🗺️ Real-time route availability and pricing
+- 👥 User profiles for managing bookings and preferences
 
-## Features
+### System Features
+- 🔐 Secure user authentication and authorization
+- 💽 MongoDB database for reliable data storage
+- 🚌 Real-time seat availability updates
+- 📊 Dynamic pricing based on seat type and location
+- 🔄 Automatic booking reference generation
+- 📱 Responsive design for all screen sizes
 
-- Interactive seat booking system
-- Real-time seat availability
-- Secure payment processing
-- User authentication
-- Booking history
-- Email notifications
-- Mobile-responsive design
+## 📸 Screenshots
 
-## Getting Started
+### Homepage & Route Search
+![Homepage](assets/images/Capture%20079%20-%20EasyTravel%20-%20Your%20Trusted%20Travel%20Partner%20-%20127.0.0.1.png)
+*Modern and intuitive homepage with easy route search*
 
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Create a .env file with your environment variables
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
+### Available Routes
+![Routes](assets/images/Capture%20078%20-%20Routes%20-%20EasyTravel%20-%20127.0.0.1.png)
+*Comprehensive route listing with pricing and schedules*
 
-## Technologies Used
+### Seat Selection
+![Seat Selection](assets/images/Capture%20080%20-%20Select%20Your%20Seats%20-%20EasyTravel%20-%20127.0.0.1.png)
+*Interactive seat selection interface*
 
-- Node.js
-- Express
+### Payment Processing
+![Payment](assets/images/Capture%20081%20-%20Payment%20-%20EasyTravel%20-%20127.0.0.1.png)
+*Secure payment processing with multiple payment options*
+
+### Booking Confirmation
+![Booking Confirmation](assets/images/Capture%20083%20-%20Booking%20Confirmation%20-%20EasyTravel%20-%20127.0.0.1.png)
+*Detailed booking confirmation with all travel information*
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v14 or higher)
 - MongoDB
-- Socket.IO
-- JWT Authentication
-- Nodemailer
-- HTML5/CSS3
-- JavaScript (ES6+)
+- npm or yarn
 
-## Contributing
+### Installation
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/EasyTravel.git
+```
+
+2. Install dependencies
+```bash
+cd EasyTravel
+npm install
+```
+
+3. Set up environment variables
+```bash
+cp .env.example .env
+# Edit .env with your configuration
+```
+
+4. Start the server
+```bash
+npm start
+```
+
+## 💻 Usage
+
+1. Visit `http://localhost:3000` in your browser
+2. Search for available routes by selecting origin, destination, and date
+3. Choose your preferred bus and seats
+4. Complete the booking by making payment
+5. Receive booking confirmation with ticket details
+
+## 🛠️ Built With
+
+- Frontend:
+  - HTML5, CSS3, JavaScript
+  - Responsive design principles
+  - Interactive UI components
+
+- Backend:
+  - Node.js
+  - Express.js
+  - MongoDB
+  - JWT Authentication
+
+- Payment Integration:
+  - MTN Mobile Money
+  - Orange Money
+  - Credit Card Processing
+
+## 🤝 Contributing
 
 1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a new Pull Request
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## License
+## 👥 Authors
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+- **Nkwain Norbert** - *Initial work and backend implementation* - [GitHub Profile](https://github.com/afumbom)
+- **Wepngong Maureen** - *Frontend Implementation* - [GitHub Profile](https://github.com/maureenblack)
+
+## 🙏 Acknowledgments
+
+* Hat tip to anyone whose code was used
+* Inspiration
+* etc
